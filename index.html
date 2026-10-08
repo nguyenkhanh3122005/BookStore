@@ -1,0 +1,4472 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Online - Nhà Sách Trực Tuyến Hàng Đầu</title>
+  <style>
+    /* ========================================================
+       RESET & TYPOGRAPHY - PHONG CÁCH HIỆN ĐẠI (FAHASA STYLE)
+       Màu chủ đạo: Đỏ thương mại điện tử (#C92127) kết hợp
+       Xanh ngọc / Xanh thông Giáng sinh (#007A3D, #166534)
+       ======================================================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: #333333;
+      background-color: #eef2f6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: #212121;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    a:hover {
+      color: #c92127;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      vertical-align: middle;
+    }
+
+    /* Container bao bọc toàn bộ trang */
+    .wrapper {
+      max-width: 1220px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* ========================================================
+       TOP PROMOTION STRIP (THANH KHUYẾN MÃI ĐỈNH TRANG)
+       ======================================================== */
+    .top-promo-bar {
+      background: linear-gradient(90deg, #b3161c 0%, #c92127 50%, #d32f2f 100%);
+      color: #ffffff;
+      padding: 7px 16px;
+      font-size: 12.5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 500;
+    }
+
+    .top-promo-bar .promo-highlight {
+      background: #ffeb3b;
+      color: #b71c1c;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 11px;
+      margin-left: 6px;
+      text-transform: uppercase;
+    }
+
+    .top-promo-links {
+      display: flex;
+      gap: 15px;
+      font-size: 12px;
+    }
+
+    .top-promo-links a {
+      color: #ffffff;
+      opacity: 0.9;
+    }
+
+    .top-promo-links a:hover {
+      color: #ffeb3b;
+      opacity: 1;
+    }
+
+    /* ========================================================
+       1. HEADER CHÍNH (LOGO + TÌM KIẾM + BANNER SÁCH)
+       ======================================================== */
+    .header {
+      padding: 12px 18px;
+      background: #ffffff;
+      border-bottom: 1px solid #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    /* Logo Book Online sắc nét */
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .logo-badge {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #007a3d 0%, #166534 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      box-shadow: 0 4px 10px rgba(0, 122, 61, 0.25);
+    }
+
+    .logo-badge svg {
+      width: 24px;
+      height: 24px;
+      fill: #ffffff;
+    }
+
+    .logo-text-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-title {
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+
+    .logo-title span.part1 { color: #007a3d; }
+    .logo-title span.part2 { color: #c92127; }
+
+    .logo-tagline {
+      font-size: 10px;
+      color: #666666;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    /* Thanh tìm kiếm */
+    .header-search {
+      flex: 1;
+      max-width: 440px;
+      position: relative;
+    }
+
+    .search-input-wrapper {
+      display: flex;
+      align-items: center;
+      border: 2px solid #007a3d;
+      border-radius: 25px;
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .search-input-wrapper:focus-within {
+      border-color: #c92127;
+      box-shadow: 0 2px 10px rgba(201, 33, 39, 0.15);
+    }
+
+    .search-input-wrapper input {
+      flex: 1;
+      padding: 8px 14px;
+      border: none;
+      outline: none;
+      font-size: 13px;
+      color: #333;
+    }
+
+    .search-btn {
+      background: linear-gradient(135deg, #c92127 0%, #b3161c 100%);
+      color: #ffffff;
+      border: none;
+      padding: 0 18px;
+      height: 36px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-weight: 600;
+      font-size: 13px;
+      transition: background 0.2s;
+    }
+
+    .search-btn:hover {
+      background: linear-gradient(135deg, #d32f2f 0%, #c92127 100%);
+    }
+
+    .search-btn svg {
+      width: 15px;
+      height: 15px;
+      fill: #ffffff;
+    }
+
+    /* Banner sách phía bên phải Header */
+    .header-banner-widget {
+      flex-shrink: 0;
+      background: linear-gradient(135deg, #0e3d16 0%, #166534 50%, #007a3d 100%);
+      color: #ffffff;
+      padding: 8px 14px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+      border-left: 4px solid #ffeb3b;
+    }
+
+    .banner-icon-side svg {
+      width: 28px;
+      height: 28px;
+      fill: #ffeb3b;
+    }
+
+    .banner-text-side h3 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 2px;
+      white-space: nowrap;
+    }
+
+    .banner-text-side p {
+      font-size: 11px;
+      color: #c8e6c9;
+    }
+
+    /* ========================================================
+       2. NAVBAR (Trang chủ, Giới thiệu, Giỏ hàng, Hướng dẫn, Đăng nhập)
+       ======================================================== */
+    .navbar {
+      background: #007a3d;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 18px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      gap: 4px;
+    }
+
+    .nav-item {
+      color: #ffffff;
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 0 14px;
+      height: 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      border-radius: 4px;
+    }
+
+    .nav-item svg {
+      width: 15px;
+      height: 15px;
+      fill: currentColor;
+      opacity: 0.9;
+    }
+
+    .nav-item:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+      color: #ffeb3b;
+      text-decoration: none;
+    }
+
+    .nav-item.active {
+      background-color: #0c572e;
+      color: #ffeb3b;
+    }
+
+    .nav-badge-pill {
+      background: #c92127;
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: bold;
+      padding: 1px 6px;
+      border-radius: 10px;
+      margin-left: 2px;
+    }
+
+    .nav-hotline {
+      color: #ffffff;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 500;
+    }
+
+    .nav-hotline span.phone {
+      color: #ffeb3b;
+      font-weight: 700;
+    }
+
+    /* ========================================================
+       3. BỐ CỤC 3 CỘT (MAIN CONTAINER)
+       THU NHỎ 2 BÊN - MỞ RỘNG TỐI ĐA PHẦN GIỮA
+       ======================================================== */
+    .main-content {
+      display: flex;
+      padding: 14px 16px;
+      gap: 14px;
+      background-color: #eef2f6;
+      flex: 1;
+    }
+
+    /* CỘT TRÁI: ĐÃ THU NHỎ GỌN GÀNG (185px) */
+    .col-left {
+      width: 185px;
+      flex-shrink: 0;
+    }
+
+    .card-box {
+      background: #ffffff;
+      border-radius: 8px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+
+    .box-header {
+      background: #ffffff;
+      color: #1f2937;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 9px 10px;
+      border-bottom: 2px solid #007a3d;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.2px;
+    }
+
+    .box-header svg {
+      width: 15px;
+      height: 15px;
+      fill: #007a3d;
+    }
+
+    .category-list {
+      padding: 4px 0;
+    }
+
+    .category-item {
+      padding: 6px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      font-size: 12.5px;
+      color: #4b5563;
+      border-left: 3px solid transparent;
+      transition: all 0.15s ease;
+    }
+
+    .category-item:hover {
+      background-color: #f3fdf6;
+      color: #007a3d;
+      border-left-color: #007a3d;
+      padding-left: 12px;
+    }
+
+    .category-item.active {
+      background-color: #e8f5e9;
+      color: #007a3d;
+      font-weight: 700;
+      border-left-color: #007a3d;
+    }
+
+    .cat-name-group {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      overflow: hidden;
+    }
+
+    .cat-bullet {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background-color: #9ca3af;
+      flex-shrink: 0;
+    }
+
+    .category-item:hover .cat-bullet,
+    .category-item.active .cat-bullet {
+      background-color: #007a3d;
+      transform: scale(1.2);
+    }
+
+    .cat-count-badge {
+      font-size: 10.5px;
+      background: #f3f4f6;
+      color: #6b7280;
+      padding: 1px 6px;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+
+    .category-item.active .cat-count-badge {
+      background: #007a3d;
+      color: #ffffff;
+    }
+
+    /* Hộp hỗ trợ cột trái */
+    .support-widget {
+      padding: 10px 8px;
+      text-align: center;
+    }
+
+    .support-icon-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #e8f5e9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 6px auto;
+    }
+
+    .support-icon-circle svg {
+      width: 18px;
+      height: 18px;
+      fill: #007a3d;
+    }
+
+    .support-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #1f2937;
+    }
+
+    .support-phone-num {
+      font-size: 14px;
+      font-weight: 800;
+      color: #c92127;
+      margin: 2px 0;
+    }
+
+    .support-time {
+      font-size: 10.5px;
+      color: #6b7280;
+    }
+
+    /* ========================================================
+       CỘT GIỮA: MỞ RỘNG TO RA VÀ NỔI BẬT "SÁCH MỚI PHÁT HÀNH"
+       ======================================================== */
+    .col-center {
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* KHUNG "SÁCH MỚI PHÁT HÀNH" TO RA, NỔI BẬT PHONG CÁCH GIÁNG SINH */
+    .news-card-featured {
+      background: #ffffff;
+      border-radius: 10px;
+      border: 1.5px solid #fed7aa;
+      padding: 16px 18px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 14px rgba(234, 88, 12, 0.08);
+      position: relative;
+    }
+
+    .news-card-header-large {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #ffedd5;
+      margin-bottom: 14px;
+    }
+
+    .news-badge-title-large {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 16px;
+      font-weight: 800;
+      color: #c92127;
+      letter-spacing: 0.2px;
+    }
+
+    .news-badge-title-large span.festive-tag {
+      background: linear-gradient(135deg, #c92127 0%, #991b1b 100%);
+      color: #ffffff;
+      font-size: 10.5px;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      box-shadow: 0 2px 5px rgba(201, 33, 39, 0.25);
+    }
+
+    /* LƯỚI 4 ĐẦU SÁCH MỚI NỔI BẬT TO RÕ RÀNG */
+    .featured-new-books-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .featured-new-book-card {
+      background: #fafaf9;
+      border: 1px solid #f2f2f2;
+      border-radius: 8px;
+      padding: 10px;
+      display: flex;
+      gap: 12px;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .featured-new-book-card:hover {
+      background: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+      border-color: #fed7aa;
+    }
+
+    .featured-thumb {
+      width: 72px;
+      height: 98px;
+      flex-shrink: 0;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.12);
+      border: 1px solid #e7e5e4;
+      background: #fff;
+    }
+
+    .featured-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .featured-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-width: 0;
+    }
+
+    .featured-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1c1917;
+      line-height: 1.35;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .featured-title:hover {
+      color: #c92127;
+    }
+
+    .featured-cat {
+      font-size: 10.5px;
+      color: #007a3d;
+      font-weight: 600;
+    }
+
+    .featured-price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 4px;
+    }
+
+    .featured-price {
+      color: #c92127;
+      font-size: 14.5px;
+      font-weight: 800;
+    }
+
+    /* Các dòng tin sách mới bổ sung */
+    .more-news-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      border-top: 1px dashed #e7e5e4;
+      padding-top: 10px;
+    }
+
+    .more-news-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12.5px;
+      color: #44403c;
+    }
+
+    .more-news-item:hover {
+      color: #c92127;
+    }
+
+    .more-news-item svg {
+      width: 12px;
+      height: 12px;
+      fill: #c92127;
+      flex-shrink: 0;
+    }
+
+    /* Banner khuyến mãi trung tâm */
+    .hero-promo-banner {
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #b3161c 0%, #c92127 60%, #e53935 100%);
+      color: #ffffff;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(201, 33, 39, 0.2);
+    }
+
+    .hero-promo-banner::after {
+      content: "";
+      position: absolute;
+      right: -30px;
+      bottom: -30px;
+      width: 160px;
+      height: 160px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 50%;
+    }
+
+    .hero-banner-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: #ffeb3b;
+      color: #b71c1c;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 10px;
+      border-radius: 12px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .hero-title {
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 4px;
+      color: #ffffff;
+    }
+
+    .hero-sub {
+      font-size: 12px;
+      color: #ffebee;
+      opacity: 0.95;
+    }
+
+    .hero-coupon-box {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px dashed rgba(255, 255, 255, 0.6);
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    .coupon-code {
+      font-size: 16px;
+      font-weight: 800;
+      color: #ffeb3b;
+      letter-spacing: 1px;
+    }
+
+    .coupon-desc {
+      font-size: 10px;
+      color: #ffffff;
+    }
+
+    /* Thanh tiêu đề danh mục sách */
+    .section-heading-bar {
+      background: #ffffff;
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+    }
+
+    .heading-title-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      color: #1f2937;
+    }
+
+    .heading-title-group span.active-topic {
+      color: #007a3d;
+    }
+
+    .heading-book-count {
+      font-size: 12.5px;
+      color: #6b7280;
+      font-weight: 500;
+    }
+
+    /* BỐ CỤC LƯỚI SÁCH (RỘNG RÃI, THOÁNG ĐÃNG) */
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    /* THẺ SÁCH HIỆN ĐẠI */
+    .book-card {
+      background: #ffffff;
+      border-radius: 8px;
+      border: 1px solid #e5e7eb;
+      padding: 12px 14px;
+      display: flex;
+      gap: 14px;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+      position: relative;
+    }
+
+    .book-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      border-color: #a5d6a7;
+    }
+
+    .book-thumb-wrapper {
+      width: 98px;
+      height: 134px;
+      flex-shrink: 0;
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+      background: #f9fafb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.15);
+      border: 1px solid #e5e7eb;
+    }
+
+    .book-thumb-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .book-card:hover .book-thumb-wrapper img {
+      transform: scale(1.05);
+    }
+
+    .discount-badge {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      background: #c92127;
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 5px;
+      border-radius: 3px;
+      box-shadow: 0 2px 4px rgba(201, 33, 39, 0.3);
+    }
+
+    .book-details-col {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .book-cat-tag {
+      font-size: 10.5px;
+      color: #007a3d;
+      background: #e8f5e9;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+      display: inline-block;
+      width: fit-content;
+      margin-bottom: 5px;
+    }
+
+    .book-title-link {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #1f2937;
+      line-height: 1.35;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 6px;
+      transition: color 0.2s;
+    }
+
+    .book-title-link:hover {
+      color: #c92127;
+    }
+
+    .book-stars {
+      color: #f59e0b;
+      font-size: 11px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .book-pricing-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .price-current {
+      color: #c92127;
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+    }
+
+    .price-old {
+      font-size: 11.5px;
+      color: #9ca3af;
+      text-decoration: line-through;
+    }
+
+    /* NÚT "CHỌN MUA" SẮC NÉT HOÀN TOÀN */
+    .btn-buy-modern {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      background: linear-gradient(135deg, #c92127 0%, #b3161c 100%);
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      padding: 7px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(201, 33, 39, 0.28);
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      width: fit-content;
+      outline: none;
+      user-select: none;
+    }
+
+    .btn-buy-modern:hover {
+      background: linear-gradient(135deg, #dc2626 0%, #c92127 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(201, 33, 39, 0.38);
+    }
+
+    .btn-buy-modern:active {
+      transform: translateY(0);
+      box-shadow: 0 1px 3px rgba(201, 33, 39, 0.2);
+    }
+
+    .btn-buy-modern svg {
+      width: 14px;
+      height: 14px;
+      fill: #ffffff;
+      flex-shrink: 0;
+    }
+
+    .no-books-card {
+      grid-column: span 2;
+      background: #ffffff;
+      border-radius: 8px;
+      border: 1px dashed #d1d5db;
+      padding: 50px 20px;
+      text-align: center;
+      color: #6b7280;
+    }
+
+    /* CỘT PHẢI: ĐÃ THU NHỎ GỌN GÀNG (195px) */
+    .col-right {
+      width: 195px;
+      flex-shrink: 0;
+    }
+
+    .cart-card-widget {
+      background: #ffffff;
+      border-radius: 8px;
+      border: 1px solid #fcd34d;
+      box-shadow: 0 3px 10px rgba(245, 158, 11, 0.08);
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+
+    .cart-card-header {
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #92400e;
+      border-bottom: 1px solid #fcd34d;
+    }
+
+    .cart-card-header svg {
+      width: 16px;
+      height: 16px;
+      fill: #b45309;
+    }
+
+    .cart-card-body {
+      padding: 10px;
+    }
+
+    .cart-data-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 0;
+      border-bottom: 1px dashed #f3f4f6;
+      font-size: 12px;
+    }
+
+    .cart-data-row:last-of-type {
+      border-bottom: none;
+      padding-bottom: 10px;
+    }
+
+    .cart-label {
+      color: #6b7280;
+    }
+
+    .cart-value-count {
+      font-weight: 700;
+      color: #007a3d;
+      font-size: 13px;
+    }
+
+    .cart-value-total {
+      font-weight: 800;
+      color: #c92127;
+      font-size: 14.5px;
+    }
+
+    .cart-btn-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .btn-pay-now {
+      background: linear-gradient(135deg, #c92127 0%, #b3161c 100%);
+      color: #ffffff;
+      border: none;
+      padding: 8px 6px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      box-shadow: 0 2px 6px rgba(201, 33, 39, 0.25);
+      transition: all 0.2s;
+    }
+
+    .btn-pay-now:hover {
+      background: linear-gradient(135deg, #dc2626 0%, #c92127 100%);
+    }
+
+    .btn-pay-now svg {
+      width: 14px;
+      height: 14px;
+      fill: #ffffff;
+    }
+
+    .cart-sub-actions {
+      display: flex;
+      gap: 5px;
+    }
+
+    .btn-cart-secondary {
+      flex: 1;
+      background: #f9fafb;
+      color: #374151;
+      border: 1px solid #d1d5db;
+      padding: 5px 0;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .btn-cart-secondary:hover {
+      background: #f3f4f6;
+    }
+
+    .btn-cart-secondary.clear:hover {
+      color: #c92127;
+      background: #fef2f2;
+    }
+
+    /* Đối tác liên kết cột phải */
+    .partner-ads-box {
+      background: #ffffff;
+      border-radius: 8px;
+      border: 1px solid #e5e7eb;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+    }
+
+    .ads-header-bar {
+      background: #f9fafb;
+      padding: 8px 10px;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #374151;
+      border-bottom: 1px solid #e5e7eb;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-transform: uppercase;
+    }
+
+    .ads-header-bar svg {
+      width: 13px;
+      height: 13px;
+      fill: #007a3d;
+    }
+
+    .ads-items-column {
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .ad-banner-link {
+      display: block;
+      border: 1px solid #f0f0f0;
+      border-radius: 5px;
+      overflow: hidden;
+      padding: 6px;
+      text-align: center;
+      background: #ffffff;
+      transition: all 0.2s;
+    }
+
+    .ad-banner-link:hover {
+      border-color: #007a3d;
+      transform: translateY(-2px);
+    }
+
+    /* ========================================================
+       4. FOOTER: BẢN QUYỀN NHÀ SÁCH
+       ======================================================== */
+    .footer {
+      background: #111827;
+      color: #d1d5db;
+      padding: 26px 20px 18px 20px;
+      font-size: 13px;
+      line-height: 1.7;
+      margin-top: auto;
+      border-top: 3px solid #007a3d;
+    }
+
+    .footer-columns {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 25px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #374151;
+      margin-bottom: 16px;
+    }
+
+    .footer-col h4 {
+      color: #ffffff;
+      font-size: 13.5px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      position: relative;
+      padding-bottom: 5px;
+    }
+
+    .footer-col h4::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 32px;
+      height: 2px;
+      background: #007a3d;
+    }
+
+    .footer-col p {
+      margin-bottom: 5px;
+      color: #9ca3af;
+    }
+
+    .footer-col strong {
+      color: #e5e7eb;
+    }
+
+    .footer-copyright-row {
+      text-align: center;
+      font-size: 12px;
+      color: #9ca3af;
+    }
+
+    /* ========================================================
+       5. TRANG TRÍ GIÁNG SINH: CÂY THÔNG NOEL 4 GÓC
+       ======================================================== */
+    .xmas-tree-corner {
+      position: fixed;
+      width: 70px;
+      height: 90px;
+      pointer-events: none;
+      z-index: 9990;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
+      transition: transform 0.3s;
+    }
+
+    .xmas-tree-top-left {
+      top: 10px;
+      left: 10px;
+    }
+
+    .xmas-tree-top-right {
+      top: 10px;
+      right: 10px;
+    }
+
+    .xmas-tree-bottom-left {
+      bottom: 10px;
+      left: 10px;
+    }
+
+    .xmas-tree-bottom-right {
+      bottom: 10px;
+      right: 10px;
+    }
+
+    /* Hiệu ứng lấp lánh của đèn cây thông */
+    @keyframes twinkleOrnament {
+      0%, 100% { opacity: 0.4; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    .ornament-1 { animation: twinkleOrnament 1.5s infinite ease-in-out; }
+    .ornament-2 { animation: twinkleOrnament 1.8s infinite ease-in-out 0.4s; }
+    .ornament-3 { animation: twinkleOrnament 1.3s infinite ease-in-out 0.8s; }
+    .ornament-star { animation: twinkleOrnament 2s infinite ease-in-out 0.2s; transform-origin: center; }
+
+    /* ========================================================
+       6. ĐĨA NHẠC GIÁNG SINH QUAY TRÒN Ở GÓC DƯỚI BÊN TRÁI
+       ======================================================== */
+    .xmas-music-player {
+      position: fixed;
+      bottom: 16px;
+      left: 88px;
+      z-index: 10001;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(17, 24, 39, 0.94);
+      backdrop-filter: blur(10px);
+      padding: 6px 14px 6px 6px;
+      border-radius: 40px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      border: 1.5px solid rgba(254, 215, 170, 0.4);
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .xmas-music-player:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 28px rgba(201, 33, 39, 0.45);
+      border-color: #fca5a5;
+    }
+
+    /* Đĩa than quay */
+    .vinyl-disk-wrapper {
+      position: relative;
+      width: 52px;
+      height: 52px;
+      flex-shrink: 0;
+    }
+
+    .vinyl-disk {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: radial-gradient(circle, #222 0%, #0d0d0d 60%, #1a1a1a 100%);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.3), 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Các rãnh đĩa than */
+    .vinyl-disk::before {
+      content: "";
+      position: absolute;
+      width: 80%;
+      height: 80%;
+      border-radius: 50%;
+      border: 1px dashed rgba(255, 255, 255, 0.15);
+    }
+
+    .vinyl-disk::after {
+      content: "";
+      position: absolute;
+      width: 55%;
+      height: 55%;
+      border-radius: 50%;
+      border: 1px dotted rgba(255, 255, 255, 0.2);
+    }
+
+    /* Nhãn tâm đĩa Noel */
+    .vinyl-center-sticker {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #dc2626 0%, #991b1b 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffeb3b;
+      font-size: 11px;
+      position: relative;
+      z-index: 2;
+      border: 1px solid #fef08a;
+    }
+
+    .vinyl-center-hole {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #111;
+      border-radius: 50%;
+    }
+
+    /* Cần đĩa than */
+    .vinyl-arm-needle {
+      position: absolute;
+      top: -4px;
+      right: -2px;
+      width: 18px;
+      height: 4px;
+      background: #d4d4d8;
+      border-radius: 2px;
+      transform-origin: right top;
+      transform: rotate(-25deg);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      z-index: 5;
+    }
+
+    .vinyl-arm-needle::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 2px;
+      width: 4px;
+      height: 7px;
+      background: #ef4444;
+      border-radius: 1px;
+    }
+
+    /* Khi đang phát: đĩa quay và cần hạ xuống */
+    @keyframes spinVinylRecord {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .xmas-music-player.playing .vinyl-disk {
+      animation: spinVinylRecord 3s linear infinite;
+    }
+
+    .xmas-music-player.playing .vinyl-arm-needle {
+      transform: rotate(12deg);
+    }
+
+    /* Thông tin đĩa nhạc */
+    .player-text-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .player-song-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #fef08a;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+    }
+
+    .player-control-hint {
+      font-size: 10.5px;
+      color: #d1d5db;
+      white-space: nowrap;
+    }
+
+    /* Các nút điều khiển trên thanh đĩa nhạc */
+    .player-actions {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-left: 4px;
+    }
+
+    .btn-player-mini {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.15s, border-color 0.15s;
+    }
+
+    .btn-player-mini:hover {
+      background: rgba(220, 38, 38, 0.85);
+      transform: scale(1.1);
+      border-color: #fca5a5;
+    }
+
+    .btn-player-mini.santa-btn {
+      background: rgba(220, 38, 38, 0.4);
+      border-color: #f87171;
+    }
+
+    .btn-player-mini.santa-btn:hover {
+      background: #dc2626;
+    }
+
+    /* Nốt nhạc bay lơ lửng */
+    .floating-music-notes {
+      position: absolute;
+      top: -15px;
+      left: 20px;
+      pointer-events: none;
+      display: none;
+    }
+
+    .xmas-music-player.playing .floating-music-notes {
+      display: block;
+    }
+
+    @keyframes floatUpNote {
+      0% { transform: translate(0, 0) scale(0.7); opacity: 0; }
+      40% { opacity: 1; }
+      100% { transform: translate(-15px, -35px) scale(1.2); opacity: 0; }
+    }
+
+    .note-item {
+      position: absolute;
+      font-size: 14px;
+      color: #ffeb3b;
+      animation: floatUpNote 2s infinite ease-out;
+    }
+
+    .note-1 { left: 0; animation-delay: 0s; }
+    .note-2 { left: 12px; animation-delay: 0.7s; color: #f87171; }
+    .note-3 { left: 24px; animation-delay: 1.4s; color: #86efac; }
+
+    /* ========================================================
+       KHUNG MINI PLAYER YOUTUBE (MARIAH CAREY - ALL I WANT FOR CHRISTMAS)
+       ======================================================== */
+    .yt-floating-player {
+      position: fixed;
+      bottom: 82px;
+      left: 18px;
+      z-index: 10002;
+      background: #111827;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.55);
+      border: 2px solid #ef4444;
+      width: 320px;
+      max-width: 90vw;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
+      transform-origin: bottom left;
+    }
+
+    .yt-floating-player.collapsed {
+      transform: scale(0);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .yt-player-header {
+      background: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%);
+      color: #fff;
+      padding: 6px 12px;
+      font-size: 11.5px;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+
+    .yt-player-header .yt-title-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .yt-close-btn {
+      background: none;
+      border: none;
+      color: #fca5a5;
+      font-size: 16px;
+      line-height: 1;
+      cursor: pointer;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+
+    .yt-close-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .yt-iframe-container {
+      position: relative;
+      width: 100%;
+      height: 180px;
+      background: #000;
+    }
+
+    .yt-iframe-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .yt-player-footer {
+      background: #1f2937;
+      padding: 6px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #9ca3af;
+    }
+
+    .yt-player-status {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: #fef08a;
+      font-weight: 600;
+    }
+
+    /* ========================================================
+       ÔNG GIÀ NOEL CƯỠI XE TUẦN LỘC BAY QUA MÀN HÌNH
+       ======================================================== */
+    .santa-sleigh-container {
+      position: fixed;
+      top: 14%;
+      left: 0;
+      width: 440px;
+      height: 140px;
+      pointer-events: none;
+      z-index: 99999;
+      transform: translate(-480px, 0);
+      visibility: hidden;
+      will-change: transform;
+    }
+
+    .santa-sleigh-container.flying {
+      visibility: visible;
+      animation: flySantaAcross 10s cubic-bezier(0.35, 0.05, 0.65, 0.95) forwards;
+    }
+
+    @keyframes flySantaAcross {
+      0% {
+        transform: translate(-480px, 60px) rotate(-5deg);
+      }
+      20% {
+        transform: translate(20vw, -15px) rotate(4deg);
+      }
+      40% {
+        transform: translate(40vw, 40px) rotate(-3deg);
+      }
+      60% {
+        transform: translate(60vw, -5px) rotate(3deg);
+      }
+      80% {
+        transform: translate(80vw, 45px) rotate(-2deg);
+      }
+      100% {
+        transform: translate(calc(100vw + 480px), 20px) rotate(4deg);
+      }
+    }
+
+    /* Đèn mũi tuần lộc Rudolph nhấp nháy phát sáng đỏ */
+    @keyframes rudolphNoseGlow {
+      0%, 100% {
+        filter: drop-shadow(0 0 4px #ff0000) drop-shadow(0 0 10px #ff0055);
+        fill: #ff1100;
+      }
+      50% {
+        filter: drop-shadow(0 0 14px #ff0000) drop-shadow(0 0 24px #ff3333);
+        fill: #ff4444;
+      }
+    }
+
+    .rudolph-nose {
+      animation: rudolphNoseGlow 0.8s infinite ease-in-out;
+    }
+
+    /* Đôi chân tuần lộc phi nước đại (galloping) */
+    @keyframes legRunFront {
+      0%, 100% { transform: rotate(-16deg); }
+      50% { transform: rotate(20deg); }
+    }
+
+    @keyframes legRunBack {
+      0%, 100% { transform: rotate(20deg); }
+      50% { transform: rotate(-16deg); }
+    }
+
+    .deer-leg-f {
+      transform-origin: 75px 65px;
+      animation: legRunFront 0.35s infinite alternate ease-in-out;
+    }
+
+    .deer-leg-b {
+      transform-origin: 20px 65px;
+      animation: legRunBack 0.35s infinite alternate ease-in-out;
+    }
+
+    /* Tay vẫy chào của ông già Noel */
+    @keyframes santaWaveArm {
+      0%, 100% { transform: rotate(-10deg); }
+      50% { transform: rotate(15deg); }
+    }
+
+    .santa-arm-wave {
+      transform-origin: 26px 42px;
+      animation: santaWaveArm 0.6s infinite alternate ease-in-out;
+    }
+
+    /* Dải bụi sao lấp lánh và chuông bay theo sau xe */
+    .magic-sparkle-trail {
+      position: absolute;
+      left: -90px;
+      top: 45px;
+      width: 120px;
+      height: 60px;
+      pointer-events: none;
+    }
+
+    @keyframes sparkleFade {
+      0% { opacity: 0; transform: scale(0.4) translate(10px, 0); }
+      50% { opacity: 1; transform: scale(1.1) translate(-10px, -5px); }
+      100% { opacity: 0; transform: scale(0.2) translate(-30px, 10px); }
+    }
+
+    .sparkle-dot {
+      position: absolute;
+      font-size: 15px;
+      animation: sparkleFade 1s infinite ease-out;
+    }
+
+    .sp-1 { left: 80px; top: 10px; animation-delay: 0s; }
+    .sp-2 { left: 50px; top: 30px; animation-delay: 0.25s; color: #facc15; }
+    .sp-3 { left: 20px; top: 15px; animation-delay: 0.5s; color: #ffeb3b; }
+    .sp-4 { left: 0px; top: 40px; animation-delay: 0.75s; color: #60a5fa; }
+
+    /* Dải ruy băng lời chúc bay sau xe trượt tuyết */
+    .santa-banner-ribbon {
+      position: absolute;
+      left: -195px;
+      top: 12px;
+      background: linear-gradient(90deg, rgba(220, 38, 38, 0.95), rgba(185, 28, 28, 0.95));
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      border: 1px solid #fef08a;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      animation: waveRibbon 1.2s infinite ease-in-out;
+    }
+
+    @keyframes waveRibbon {
+      0%, 100% { transform: translateY(0) rotate(-2deg); }
+      50% { transform: translateY(-4px) rotate(2deg); }
+    }
+
+    /* ========================================================
+       7. CANVAS HIỆU ỨNG TUYẾT RƠI (FULL MÀN HÌNH)
+       ======================================================== */
+    #snowCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 9997;
+    }
+
+    /* ========================================================
+       MODAL MÃ QR THANH TOÁN (VIETCOMBANK)
+       ======================================================== */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(3px);
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-box {
+      background: #ffffff;
+      width: 90%;
+      max-width: 640px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      overflow: hidden;
+      animation: modalScale 0.2s ease-out;
+    }
+
+    @keyframes modalScale {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .modal-header {
+      background: linear-gradient(135deg, #007a3d 0%, #166534 100%);
+      color: #ffffff;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .modal-close-btn {
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 22px;
+      font-weight: bold;
+      cursor: pointer;
+      opacity: 0.8;
+      transition: opacity 0.15s;
+    }
+
+    .modal-close-btn:hover {
+      opacity: 1;
+    }
+
+    .modal-body {
+      padding: 20px;
+      max-height: 500px;
+      overflow-y: auto;
+    }
+
+    .modal-footer {
+      background: #f9fafb;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .qr-modal-container {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .qr-image-wrapper {
+      text-align: center;
+      flex-shrink: 0;
+      margin: 0 auto;
+    }
+
+    .qr-image-wrapper img {
+      max-width: 220px;
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      border: 1px solid #e5e7eb;
+      display: block;
+    }
+
+    .qr-info-wrapper {
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .qr-info-box {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-bottom: 12px;
+    }
+
+    .bank-info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 0;
+      border-bottom: 1px dashed #e5e7eb;
+      font-size: 13px;
+    }
+
+    .bank-info-row:last-child {
+      border-bottom: none;
+    }
+
+    .bank-label {
+      color: #6b7280;
+    }
+
+    .bank-val {
+      font-weight: 700;
+      color: #111827;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .bank-val.highlight-price {
+      color: #c92127;
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+    .btn-copy-chip {
+      background: #e8f5e9;
+      color: #007a3d;
+      border: 1px solid #a5d6a7;
+      padding: 2px 7px;
+      font-size: 11px;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .btn-copy-chip:hover {
+      background: #c8e6c9;
+    }
+
+    .qr-guide-banner {
+      font-size: 12px;
+      color: #4b5563;
+      background: #fffbeb;
+      padding: 10px 12px;
+      border-radius: 6px;
+      border-left: 3px solid #f59e0b;
+      line-height: 1.5;
+    }
+
+    .cart-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .cart-table th, .cart-table td {
+      border: 1px solid #e5e7eb;
+      padding: 10px 8px;
+    }
+
+    .cart-table th {
+      background: #f9fafb;
+      color: #374151;
+      font-weight: 700;
+      text-align: left;
+    }
+
+    .cart-table td.text-right { text-align: right; }
+    .cart-table td.text-center { text-align: center; }
+
+    .qty-btn {
+      background: #f3f4f6;
+      border: 1px solid #d1d5db;
+      padding: 2px 7px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #111827;
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+      font-size: 13.5px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 99999;
+      pointer-events: none;
+      border-left: 4px solid #10b981;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========================================================
+       MODAL MÔ TẢ CHI TIẾT SÁCH (BOOK DETAIL MODAL)
+       ======================================================== */
+    .book-detail-modal-box {
+      max-width: 860px;
+      width: 95%;
+      max-height: 92vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .book-detail-body {
+      padding: 22px 24px;
+      overflow-y: auto;
+      max-height: calc(92vh - 125px);
+    }
+
+    .book-detail-top {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 24px;
+      margin-bottom: 22px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .book-detail-cover {
+      position: relative;
+      text-align: center;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .book-detail-cover img {
+      max-width: 100%;
+      max-height: 250px;
+      object-fit: contain;
+      border-radius: 6px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      transition: transform 0.25s;
+    }
+
+    .book-detail-cover img:hover {
+      transform: scale(1.03);
+    }
+
+    .detail-trust-badges {
+      margin-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      width: 100%;
+    }
+
+    .trust-badge-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      color: #374151;
+      background: #ffffff;
+      padding: 6px 8px;
+      border-radius: 6px;
+      border: 1px solid #e5e7eb;
+    }
+
+    .trust-badge-item span.icon {
+      color: #007a3d;
+      font-weight: bold;
+    }
+
+    .book-detail-meta {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .book-detail-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: #111827;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    .book-detail-submeta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+      font-size: 13px;
+    }
+
+    .detail-stars {
+      color: #f59e0b;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .detail-price-box {
+      background: #fef2f2;
+      border: 1px dashed #fca5a5;
+      padding: 12px 16px;
+      border-radius: 10px;
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .detail-price-current {
+      font-size: 24px;
+      font-weight: 800;
+      color: #c92127;
+    }
+
+    .detail-price-old {
+      font-size: 14px;
+      color: #9ca3af;
+      text-decoration: line-through;
+    }
+
+    .detail-price-save {
+      font-size: 12px;
+      font-weight: 700;
+      background: #c92127;
+      color: #ffffff;
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    .book-spec-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 16px;
+      font-size: 12.5px;
+      background: #f9fafb;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: 1px solid #f3f4f6;
+      margin-bottom: 16px;
+    }
+
+    .spec-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .spec-label {
+      color: #6b7280;
+    }
+
+    .spec-value {
+      color: #111827;
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .detail-action-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .detail-qty-control {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .detail-qty-btn {
+      background: #f9fafb;
+      border: none;
+      width: 32px;
+      height: 34px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 15px;
+      color: #374151;
+      transition: background 0.15s;
+    }
+
+    .detail-qty-btn:hover {
+      background: #e5e7eb;
+    }
+
+    .detail-qty-input {
+      width: 44px;
+      height: 34px;
+      border: none;
+      border-left: 1px solid #e5e7eb;
+      border-right: 1px solid #e5e7eb;
+      text-align: center;
+      font-weight: 700;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .btn-detail-add-cart {
+      background: #007a3d;
+      color: #ffffff;
+      border: none;
+      padding: 9px 16px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s, transform 0.15s;
+    }
+
+    .btn-detail-add-cart:hover {
+      background: #006030;
+      transform: translateY(-1px);
+    }
+
+    .btn-detail-buy-now {
+      background: #c92127;
+      color: #ffffff;
+      border: none;
+      padding: 9px 16px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s, transform 0.15s;
+    }
+
+    .btn-detail-buy-now:hover {
+      background: #a81a1f;
+      transform: translateY(-1px);
+    }
+
+    /* Khối mô tả chi tiết nội dung cuốn sách */
+    .book-desc-section {
+      background: #ffffff;
+    }
+
+    .book-desc-section-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #111827;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #007a3d;
+    }
+
+    .book-desc-content {
+      font-size: 13.5px;
+      line-height: 1.8;
+      color: #374151;
+    }
+
+    .book-desc-content p {
+      margin-bottom: 12px;
+    }
+
+    .book-highlights-box {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 16px 0;
+    }
+
+    .book-highlights-box h4 {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #166534;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .book-highlights-box ul {
+      padding-left: 20px;
+      font-size: 13px;
+      color: #15803d;
+    }
+
+    .book-highlights-box li {
+      margin-bottom: 5px;
+    }
+
+    .book-audience-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      font-size: 13px;
+      color: #1e40af;
+      line-height: 1.6;
+    }
+
+    .book-store-guarantee-box {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 12.5px;
+      color: #92400e;
+      line-height: 1.6;
+    }
+
+    /* Nút Chi tiết trên thẻ sách */
+    .btn-quick-detail {
+      background: #f3f4f6;
+      border: 1px solid #d1d5db;
+      color: #374151;
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 6px 9px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+    }
+
+    .btn-quick-detail:hover {
+      background: #e5e7eb;
+      border-color: #9ca3af;
+      color: #111827;
+    }
+
+    .detail-modal-quick-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: rgba(0, 0, 0, 0.65);
+      color: #ffffff;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .book-thumb-wrapper:hover .detail-modal-quick-btn {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .main-content {
+        flex-direction: column;
+      }
+      .col-left, .col-right {
+        width: 100%;
+      }
+      .header {
+        flex-wrap: wrap;
+      }
+      .header-search {
+        order: 3;
+        max-width: 100%;
+        width: 100%;
+      }
+      .books-grid {
+        grid-template-columns: 1fr;
+      }
+      .featured-new-books-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-columns {
+        grid-template-columns: 1fr;
+      }
+      .xmas-tree-corner {
+        display: none;
+      }
+      .book-detail-top {
+        grid-template-columns: 1fr;
+      }
+      .book-detail-cover img {
+        max-height: 200px;
+      }
+      .book-spec-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================
+       CANVAS HIỆU ỨNG TUYẾT RƠI GIÁNG SINH
+       ======================================================== -->
+  <canvas id="snowCanvas"></canvas>
+
+  <!-- ========================================================
+       ÔNG GIÀ NOEL CƯỠI TUẦN LỘC BAY QUA MÀN HÌNH
+       ======================================================== -->
+  <div id="santaSleighContainer" class="santa-sleigh-container" title="Ông già Noel & Đàn tuần lộc Giáng Sinh">
+    <!-- Dải ruy băng lời chúc bay theo sau xe -->
+    <div class="santa-banner-ribbon">
+      <span>Ho! Ho! Ho! Giáng Sinh An Lành! 🎅🎄</span>
+    </div>
+
+    <!-- Bụi sao lấp lánh và chuông bay theo đuôi xe -->
+    <div class="magic-sparkle-trail">
+      <span class="sparkle-dot sp-1">✨</span>
+      <span class="sparkle-dot sp-2">⭐</span>
+      <span class="sparkle-dot sp-3">🔔</span>
+      <span class="sparkle-dot sp-4">❄️</span>
+    </div>
+
+    <!-- HÌNH VẼ SVG ÔNG GIÀ NOEL, XE TRƯỢT TUYẾT & 2 CHÚ TUẦN LỘC -->
+    <svg viewBox="0 0 440 140" width="440" height="140" style="overflow: visible;">
+      <defs>
+        <filter id="rudolphGlow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="3.5" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+
+      <!-- DÂY CƯƠNG VÀNG NỐI TỪ ĐẦU TUẦN LỘC VỀ TAY ÔNG GIÀ NOEL -->
+      <path d="M 122,55 Q 210,48 290,46" fill="none" stroke="#facc15" stroke-width="1.8" stroke-dasharray="4,2"/>
+      <path d="M 122,55 Q 260,42 390,42" fill="none" stroke="#facc15" stroke-width="1.8" stroke-dasharray="4,2"/>
+
+      <!-- ================= TUẦN LỘC DẪN ĐẦU (RUDOLPH - BÊN PHẢI) ================= -->
+      <g class="reindeer reindeer-rudolph" transform="translate(295, 10)">
+        <!-- Sừng hươu gạc nhọn -->
+        <path d="M 98,18 Q 106,8 114,6 M 106,12 Q 112,12 116,16 M 98,18 Q 94,8 90,6 M 96,12 Q 92,12 88,14" fill="none" stroke="#78350f" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Chân sau chạy nước đại -->
+        <g class="deer-leg-b">
+          <path d="M 22,60 L 15,85 L 8,105 L 12,106" fill="none" stroke="#92400e" stroke-width="4.5" stroke-linecap="round"/>
+          <path d="M 28,62 L 32,86 L 26,105 L 30,106" fill="none" stroke="#78350f" stroke-width="4" stroke-linecap="round"/>
+        </g>
+        <!-- Thân tuần lộc -->
+        <ellipse cx="48" cy="54" rx="30" ry="17" fill="#92400e" transform="rotate(-6 48 54)"/>
+        <ellipse cx="68" cy="46" rx="14" ry="13" fill="#b45309"/>
+        <!-- Ngực lông trắng vàng nhạt -->
+        <ellipse cx="72" cy="50" rx="9" ry="8" fill="#fef3c7"/>
+        <!-- Đuôi vểnh -->
+        <path d="M 18,48 Q 10,44 14,40 Q 20,44 20,48" fill="#92400e"/>
+        <!-- Cổ và đầu -->
+        <path d="M 64,48 L 88,28 L 94,36 L 75,58 Z" fill="#92400e"/>
+        <ellipse cx="94" cy="27" rx="13" ry="9" fill="#92400e" transform="rotate(-15 94 27)"/>
+        <!-- Tai -->
+        <path d="M 87,20 Q 82,14 84,18 Z" fill="#b45309"/>
+        <!-- Mắt -->
+        <circle cx="95" cy="24" r="2" fill="#1f2937"/>
+        <circle cx="95.5" cy="23.5" r="0.7" fill="#fff"/>
+        <!-- Đai yếm ngực đỏ có gắn chuông vàng -->
+        <path d="M 68,36 Q 78,48 84,40" fill="none" stroke="#dc2626" stroke-width="3.5"/>
+        <circle cx="76" cy="44" r="3.5" fill="#facc15" stroke="#78350f" stroke-width="0.8"/>
+        <!-- Mũi đỏ rực của chú tuần lộc Rudolph -->
+        <circle cx="106" cy="29" r="4.5" fill="#ef4444" class="rudolph-nose" filter="url(#rudolphGlow)"/>
+        <!-- Chân trước phi nước đại -->
+        <g class="deer-leg-f">
+          <path d="M 72,60 L 85,80 L 100,85" fill="none" stroke="#92400e" stroke-width="4.5" stroke-linecap="round"/>
+          <path d="M 66,62 L 76,82 L 86,95" fill="none" stroke="#78350f" stroke-width="4" stroke-linecap="round"/>
+        </g>
+      </g>
+
+      <!-- ================= TUẦN LỘC THỨ HAI (Ở GIỮA) ================= -->
+      <g class="reindeer" transform="translate(195, 18)">
+        <path d="M 98,18 Q 106,8 114,6 M 106,12 Q 112,12 116,16 M 98,18 Q 94,8 90,6" fill="none" stroke="#78350f" stroke-width="2.5" stroke-linecap="round"/>
+        <g class="deer-leg-b">
+          <path d="M 22,60 L 15,85 L 8,105" fill="none" stroke="#92400e" stroke-width="4.5" stroke-linecap="round"/>
+          <path d="M 28,62 L 32,86 L 26,105 L 30,106" fill="none" stroke="#78350f" stroke-width="4" stroke-linecap="round"/>
+        </g>
+        <ellipse cx="48" cy="54" rx="30" ry="17" fill="#92400e" transform="rotate(-6 48 54)"/>
+        <ellipse cx="68" cy="46" rx="14" ry="13" fill="#b45309"/>
+        <ellipse cx="72" cy="50" rx="9" ry="8" fill="#fef3c7"/>
+        <path d="M 18,48 Q 10,44 14,40 Q 20,44 20,48" fill="#92400e"/>
+        <path d="M 64,48 L 88,28 L 94,36 L 75,58 Z" fill="#92400e"/>
+        <ellipse cx="94" cy="27" rx="13" ry="9" fill="#92400e" transform="rotate(-15 94 27)"/>
+        <circle cx="95" cy="24" r="2" fill="#1f2937"/>
+        <circle cx="105" cy="29" r="2.5" fill="#451a03"/>
+        <path d="M 68,36 Q 78,48 84,40" fill="none" stroke="#dc2626" stroke-width="3.5"/>
+        <circle cx="76" cy="44" r="3.5" fill="#facc15" stroke="#78350f" stroke-width="0.8"/>
+        <g class="deer-leg-f">
+          <path d="M 72,60 L 85,80 L 100,85" fill="none" stroke="#92400e" stroke-width="4.5" stroke-linecap="round"/>
+          <path d="M 66,62 L 76,82 L 86,95" fill="none" stroke="#78350f" stroke-width="4" stroke-linecap="round"/>
+        </g>
+      </g>
+
+      <!-- ================= TÚI QUÀ KHỔNG LỒ SAU XE TRƯỢT TUYẾT ================= -->
+      <g transform="translate(15, 25)">
+        <ellipse cx="55" cy="55" rx="26" ry="24" fill="#15803d" stroke="#166534" stroke-width="2"/>
+        <path d="M 50,33 Q 55,25 60,33" fill="#eab308"/>
+        <!-- Các hộp quà nhiều màu -->
+        <rect x="42" y="18" width="18" height="18" fill="#dc2626" rx="2" transform="rotate(-10 51 27)"/>
+        <line x1="51" y1="18" x2="51" y2="36" stroke="#facc15" stroke-width="2.5" transform="rotate(-10 51 27)"/>
+        <line x1="42" y1="27" x2="60" y2="27" stroke="#facc15" stroke-width="2.5" transform="rotate(-10 51 27)"/>
+        <rect x="60" y="24" width="16" height="16" fill="#2563eb" rx="2" transform="rotate(15 68 32)"/>
+        <line x1="68" y1="24" x2="68" y2="40" stroke="#fef08a" stroke-width="2" transform="rotate(15 68 32)"/>
+        <!-- Cây kẹo Noel -->
+        <path d="M 36,36 Q 30,20 38,15 Q 44,12 45,20" fill="none" stroke="#ef4444" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M 36,36 Q 30,20 38,15 Q 44,12 45,20" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-dasharray="3,3" stroke-linecap="round"/>
+      </g>
+
+      <!-- ================= ÔNG GIÀ NOEL (SANTA CLAUS) ================= -->
+      <g transform="translate(70, 15)">
+        <ellipse cx="40" cy="52" rx="19" ry="20" fill="#dc2626"/>
+        <rect x="23" y="54" width="34" height="6" fill="#18181b" rx="1"/>
+        <rect x="36" y="52" width="9" height="10" fill="none" stroke="#facc15" stroke-width="2" rx="1"/>
+        <ellipse cx="40" cy="38" rx="14" ry="5" fill="#f8fafc"/>
+        <ellipse cx="40" cy="30" rx="12" ry="11" fill="#fed7aa"/>
+        <circle cx="34" cy="32" r="3" fill="#fca5a5" opacity="0.7"/>
+        <circle cx="46" cy="32" r="3" fill="#fca5a5" opacity="0.7"/>
+        <path d="M 33,28 Q 36,25 38,28" fill="none" stroke="#1f2937" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M 42,28 Q 45,25 48,28" fill="none" stroke="#1f2937" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="40" cy="30" r="2.8" fill="#f87171"/>
+        <path d="M 28,32 Q 40,48 52,32 Q 54,46 40,50 Q 26,46 28,32 Z" fill="#ffffff" stroke="#f1f5f9" stroke-width="0.8"/>
+        <ellipse cx="36" cy="34" rx="6" ry="2.5" fill="#ffffff" transform="rotate(-15 36 34)"/>
+        <ellipse cx="44" cy="34" rx="6" ry="2.5" fill="#ffffff" transform="rotate(15 44 34)"/>
+        <path d="M 28,24 Q 40,10 56,18 L 56,22 Q 40,16 28,24 Z" fill="#dc2626"/>
+        <path d="M 28,23 Q 40,18 54,23" stroke="#f8fafc" stroke-width="5" stroke-linecap="round"/>
+        <path d="M 54,20 Q 64,24 62,32" fill="none" stroke="#dc2626" stroke-width="4.5" stroke-linecap="round"/>
+        <circle cx="62" cy="34" r="5" fill="#ffffff" stroke="#f1f5f9" stroke-width="1"/>
+        <!-- Tay cầm dây cương -->
+        <ellipse cx="52" cy="46" rx="5" ry="4" fill="#ffffff"/>
+        <!-- Tay giơ lên vẫy chào -->
+        <g class="santa-arm-wave">
+          <path d="M 26,42 Q 18,32 18,22" fill="none" stroke="#dc2626" stroke-width="6" stroke-linecap="round"/>
+          <ellipse cx="18" cy="22" rx="4.5" ry="4" fill="#ffffff"/>
+        </g>
+      </g>
+
+      <!-- ================= XE TRƯỢT TUYẾT (CHRISTMAS SLEIGH) ================= -->
+      <g transform="translate(10, 30)">
+        <path d="M 25,65 Q 20,40 55,42 L 115,42 Q 135,42 145,55 Q 155,70 135,76 L 45,76 Q 22,76 25,65 Z" fill="#b91c1c" stroke="#991b1b" stroke-width="1.5"/>
+        <path d="M 35,48 Q 65,45 110,48 Q 130,50 135,62" fill="none" stroke="#facc15" stroke-width="2.5" stroke-linecap="round"/>
+        <rect x="62" y="38" width="22" height="12" fill="#15803d" rx="3"/>
+        <line x1="45" y1="76" x2="52" y2="92" stroke="#d97706" stroke-width="3" stroke-linecap="round"/>
+        <line x1="85" y1="76" x2="88" y2="92" stroke="#d97706" stroke-width="3" stroke-linecap="round"/>
+        <line x1="125" y1="76" x2="122" y2="92" stroke="#d97706" stroke-width="3" stroke-linecap="round"/>
+        <path d="M 22,92 L 140,92 Q 165,92 168,75 Q 170,62 160,65 Q 155,72 148,82" fill="none" stroke="#facc15" stroke-width="4.5" stroke-linecap="round"/>
+        <path d="M 22,92 Q 15,92 12,86" fill="none" stroke="#facc15" stroke-width="4.5" stroke-linecap="round"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- ========================================================
+       CÂY THÔNG NOEL TRANG TRÍ Ở 4 GÓC TRANG WEB
+       ======================================================== -->
+  <!-- Góc Trên - Trái -->
+  <div class="xmas-tree-corner xmas-tree-top-left" title="Cây thông Noel">
+    <svg viewBox="0 0 100 130">
+      <!-- Ngôi sao vàng -->
+      <polygon points="50,5 53,16 65,16 55,23 59,34 50,27 41,34 45,23 35,16 47,16" fill="#facc15" class="ornament-star"/>
+      <!-- Tầng lá 1 -->
+      <polygon points="50,22 30,52 70,52" fill="#15803d"/>
+      <polygon points="50,22 40,42 60,42" fill="#16a34a"/>
+      <!-- Tầng lá 2 -->
+      <polygon points="50,44 20,80 80,80" fill="#166534"/>
+      <polygon points="50,44 32,70 68,70" fill="#15803d"/>
+      <!-- Tầng lá 3 -->
+      <polygon points="50,70 10,112 90,112" fill="#14532d"/>
+      <polygon points="50,70 24,102 76,102" fill="#166534"/>
+      <!-- Thân cây -->
+      <rect x="44" y="112" width="12" height="15" fill="#78350f" rx="2"/>
+      <!-- Quả cầu trang trí lấp lánh -->
+      <circle cx="48" cy="42" r="3.5" fill="#ef4444" class="ornament-1"/>
+      <circle cx="36" cy="72" r="4" fill="#facc15" class="ornament-2"/>
+      <circle cx="64" cy="74" r="3.5" fill="#3b82f6" class="ornament-3"/>
+      <circle cx="30" cy="100" r="4.5" fill="#ec4899" class="ornament-1"/>
+      <circle cx="50" cy="95" r="4" fill="#facc15" class="ornament-2"/>
+      <circle cx="70" cy="102" r="4" fill="#ef4444" class="ornament-3"/>
+      <!-- Tuyết phủ chân cây -->
+      <ellipse cx="50" cy="126" rx="28" ry="4" fill="#ffffff" opacity="0.9"/>
+    </svg>
+  </div>
+
+  <!-- Góc Trên - Phải -->
+  <div class="xmas-tree-corner xmas-tree-top-right" title="Cây thông Noel">
+    <svg viewBox="0 0 100 130">
+      <polygon points="50,5 53,16 65,16 55,23 59,34 50,27 41,34 45,23 35,16 47,16" fill="#facc15" class="ornament-star"/>
+      <polygon points="50,22 30,52 70,52" fill="#15803d"/>
+      <polygon points="50,22 40,42 60,42" fill="#16a34a"/>
+      <polygon points="50,44 20,80 80,80" fill="#166534"/>
+      <polygon points="50,44 32,70 68,70" fill="#15803d"/>
+      <polygon points="50,70 10,112 90,112" fill="#14532d"/>
+      <polygon points="50,70 24,102 76,102" fill="#166534"/>
+      <rect x="44" y="112" width="12" height="15" fill="#78350f" rx="2"/>
+      <circle cx="52" cy="40" r="3.5" fill="#3b82f6" class="ornament-2"/>
+      <circle cx="38" cy="74" r="4" fill="#ef4444" class="ornament-1"/>
+      <circle cx="62" cy="72" r="3.5" fill="#facc15" class="ornament-3"/>
+      <circle cx="28" cy="102" r="4.5" fill="#facc15" class="ornament-2"/>
+      <circle cx="50" cy="96" r="4" fill="#3b82f6" class="ornament-3"/>
+      <circle cx="72" cy="100" r="4" fill="#ec4899" class="ornament-1"/>
+      <ellipse cx="50" cy="126" rx="28" ry="4" fill="#ffffff" opacity="0.9"/>
+    </svg>
+  </div>
+
+  <!-- Góc Dưới - Trái -->
+  <div class="xmas-tree-corner xmas-tree-bottom-left" title="Cây thông Noel">
+    <svg viewBox="0 0 100 130">
+      <polygon points="50,5 53,16 65,16 55,23 59,34 50,27 41,34 45,23 35,16 47,16" fill="#facc15" class="ornament-star"/>
+      <polygon points="50,22 30,52 70,52" fill="#15803d"/>
+      <polygon points="50,44 20,80 80,80" fill="#166534"/>
+      <polygon points="50,70 10,112 90,112" fill="#14532d"/>
+      <rect x="44" y="112" width="12" height="15" fill="#78350f" rx="2"/>
+      <circle cx="48" cy="42" r="3.5" fill="#ef4444" class="ornament-1"/>
+      <circle cx="36" cy="72" r="4" fill="#facc15" class="ornament-2"/>
+      <circle cx="64" cy="74" r="3.5" fill="#3b82f6" class="ornament-3"/>
+      <circle cx="30" cy="100" r="4.5" fill="#ec4899" class="ornament-1"/>
+      <circle cx="50" cy="95" r="4" fill="#facc15" class="ornament-2"/>
+      <circle cx="70" cy="102" r="4" fill="#ef4444" class="ornament-3"/>
+      <ellipse cx="50" cy="126" rx="28" ry="4" fill="#ffffff" opacity="0.9"/>
+    </svg>
+  </div>
+
+  <!-- Góc Dưới - Phải -->
+  <div class="xmas-tree-corner xmas-tree-bottom-right" title="Cây thông Noel">
+    <svg viewBox="0 0 100 130">
+      <polygon points="50,5 53,16 65,16 55,23 59,34 50,27 41,34 45,23 35,16 47,16" fill="#facc15" class="ornament-star"/>
+      <polygon points="50,22 30,52 70,52" fill="#15803d"/>
+      <polygon points="50,44 20,80 80,80" fill="#166534"/>
+      <polygon points="50,70 10,112 90,112" fill="#14532d"/>
+      <rect x="44" y="112" width="12" height="15" fill="#78350f" rx="2"/>
+      <circle cx="52" cy="40" r="3.5" fill="#facc15" class="ornament-2"/>
+      <circle cx="38" cy="74" r="4" fill="#ef4444" class="ornament-1"/>
+      <circle cx="62" cy="72" r="3.5" fill="#3b82f6" class="ornament-3"/>
+      <circle cx="28" cy="102" r="4.5" fill="#ec4899" class="ornament-1"/>
+      <circle cx="50" cy="96" r="4" fill="#facc15" class="ornament-2"/>
+      <circle cx="72" cy="100" r="4" fill="#3b82f6" class="ornament-3"/>
+      <ellipse cx="50" cy="126" rx="28" ry="4" fill="#ffffff" opacity="0.9"/>
+    </svg>
+  </div>
+
+  <!-- ========================================================
+       KHUNG MINI PLAYER YOUTUBE (MARIAH CAREY - ALL I WANT FOR CHRISTMAS)
+       ======================================================== -->
+  <div class="yt-floating-player collapsed" id="ytPlayerContainer">
+    <div class="yt-player-header">
+      <div class="yt-title-group">
+        <span>🎄</span>
+        <span>Mariah Carey - All I Want For Christmas Is You</span>
+      </div>
+      <button type="button" class="yt-close-btn" onclick="toggleYtPlayerCard(false)" title="Thu nhỏ player">✕</button>
+    </div>
+    <div class="yt-iframe-container">
+      <iframe id="ytMusicIframe"
+        width="320"
+        height="180"
+        src="https://www.youtube.com/embed/aAkMkVFwAoo?enablejsapi=1&autoplay=0&loop=1&playlist=aAkMkVFwAoo"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="yt-player-footer">
+      <span class="yt-player-status" id="ytStatusBadge">🎵 Mariah Carey • Giáng Sinh Rực Rỡ</span>
+      <span style="font-size: 10px; color: #9ca3af;">Christmas Classic ✨</span>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       ĐĨA NHẠC GIÁNG SINH PHÁT NHẠC Ở GÓC DƯỚI BÊN TRÁI
+       ======================================================== -->
+  <div class="xmas-music-player" id="xmasMusicPlayer">
+    <!-- Nốt nhạc bay lơ lửng -->
+    <div class="floating-music-notes">
+      <span class="note-item note-1">🎵</span>
+      <span class="note-item note-2">🎶</span>
+      <span class="note-item note-3">🔔</span>
+    </div>
+
+    <!-- Đĩa than quay tròn -->
+    <div class="vinyl-disk-wrapper" onclick="toggleXmasMusic()" title="Bấm để Bật / Tắt nhạc Giáng Sinh 🎵">
+      <div class="vinyl-arm-needle"></div>
+      <div class="vinyl-disk">
+        <div class="vinyl-center-sticker">🎄</div>
+        <div class="vinyl-center-hole"></div>
+      </div>
+    </div>
+
+    <!-- Thông tin bài hát -->
+    <div class="player-text-info" onclick="toggleXmasMusic()">
+      <div class="player-song-title">
+        <span>All I Want For Christmas Is You</span>
+        <span id="playerMusicIcon">🎵</span>
+      </div>
+      <div class="player-control-hint" id="playerStatusHint">Mariah Carey • Bấm để nghe nhạc 🔔</div>
+    </div>
+
+    <!-- Các nút thao tác nhanh -->
+    <div class="player-actions">
+      <button type="button" class="btn-player-mini" id="btnPlayPause" onclick="toggleXmasMusic()" title="Bật / Tắt nhạc">
+        <span id="playPauseIcon">▶</span>
+      </button>
+      <button type="button" class="btn-player-mini" onclick="toggleYtPlayerCard()" title="Xem / Ẩn Video YouTube">
+        📺
+      </button>
+      <button type="button" class="btn-player-mini santa-btn" onclick="triggerSantaFlyby()" title="Gọi ông già Noel & xe tuần lộc bay qua!">
+        🎅
+      </button>
+    </div>
+  </div>
+
+  <div class="wrapper">
+    <!-- ========================================================
+         TOP PROMOTION STRIP
+         ======================================================== -->
+    <div class="top-promo-bar">
+      <div>
+        <span>📚 <strong>HỘI SÁCH ONLINE 2026</strong> - Săn sách cực cuốn, giá chuẩn gu luôn!</span>
+        <span class="promo-highlight">GIẢM ĐẾN 50%</span>
+        <button type="button" class="btn-copy-chip" style="margin-left: 8px; cursor: pointer; background: #fee2e2; color: #b91c1c; border-color: #fca5a5; font-size: 11px;" onclick="triggerSantaFlyby()" title="Gọi ông già Noel và tuần lộc bay qua màn hình">🎅 Xe tuần lộc bay</button>
+      </div>
+      <div class="top-promo-links">
+        <a href="tel:0982801051">Hotline: <strong>0982 801 051</strong></a>
+        <a href="#huongdan" onclick="openModal('guideModal'); return false;">Trợ giúp</a>
+      </div>
+    </div>
+
+    <!-- ========================================================
+         1. HEADER: LOGO BOOK ONLINE + TÌM KIẾM + BANNER SÁCH
+         ======================================================== -->
+    <header class="header">
+      <!-- Logo Book Online -->
+      <a href="javascript:void(0)" class="header-logo" onclick="filterCategory('all', 'Tất cả sách');" title="Book Online">
+        <div class="logo-badge">
+          <svg viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
+        </div>
+        <div class="logo-text-group">
+          <div class="logo-title">
+            <span class="part1">Book</span><span class="part2">Online</span>
+          </div>
+          <span class="logo-tagline">Tri thức chắp cánh tương lai</span>
+        </div>
+      </a>
+
+      <!-- Thanh tìm kiếm -->
+      <div class="header-search">
+        <div class="search-input-wrapper">
+          <input type="text" id="searchInput" placeholder="Tìm kiếm tựa sách, tác giả, chuyên ngành..." oninput="searchBooks()">
+          <button type="button" class="search-btn" onclick="searchBooks()">
+            <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            <span>Tìm</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Banner sách phía bên phải Header -->
+      <div class="header-banner-widget">
+        <div class="banner-icon-side">
+          <svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
+        </div>
+        <div class="banner-text-side">
+          <h3>NHÀ SÁCH TRƯỜNG ĐẠI HỌC CN VIỆT - HUNG</h3>
+          <p>Cam kết 100% sách chính hãng &amp; Giao hàng tận nơi</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- ========================================================
+         2. NAVBAR: Trang chủ, Giới thiệu, Giỏ hàng, Hướng dẫn, Đăng nhập
+         ======================================================== -->
+    <nav class="navbar">
+      <div class="nav-menu">
+        <a href="javascript:void(0)" class="nav-item active" id="nav-home" onclick="filterCategory('all', 'Tất cả sách');">
+          <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+          <span>Trang chủ</span>
+        </a>
+        <a href="#gioithieu" class="nav-item" onclick="openModal('introModal'); return false;">
+          <span>Giới thiệu</span>
+        </a>
+        <a href="#giohang" class="nav-item" onclick="openCartModal(); return false;">
+          <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+          <span>Giỏ hàng</span>
+          <span class="nav-badge-pill" id="navCartBadge">0</span>
+        </a>
+        <a href="#huongdan" class="nav-item" onclick="openModal('guideModal'); return false;">
+          <span>Hướng dẫn</span>
+        </a>
+        <a href="#dangnhap" class="nav-item" onclick="openModal('loginModal'); return false;">
+          <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          <span>Đăng nhập</span>
+        </a>
+      </div>
+
+      <div class="nav-hotline">
+        <span>Tư vấn đặt mua:</span>
+        <span class="phone">0982 801 051</span>
+      </div>
+    </nav>
+
+    <!-- ========================================================
+         3. BỐ CỤC 3 CỘT (MAIN CONTENT)
+         ======================================================== -->
+    <main class="main-content">
+
+      <!-- ====================================================
+           CỘT TRÁI: THU NHỎ GỌN GÀNG (185px)
+           ==================================================== -->
+      <aside class="col-left">
+        <div class="card-box">
+          <div class="box-header">
+            <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
+            <span>Chủ đề sách</span>
+          </div>
+          <ul class="category-list" id="categoryList">
+            <!-- Render động bằng JS -->
+          </ul>
+        </div>
+
+        <!-- Hộp hỗ trợ khách hàng -->
+        <div class="card-box support-widget">
+          <div class="support-icon-circle">
+            <svg viewBox="0 0 24 24"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57a1.02 1.02 0 00-1.02.24l-2.2 2.2a15.045 15.045 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1A11.36 11.36 0 018.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zM19 12h2a9 9 0 00-9-9v2c3.87 0 7 3.13 7 7zm-4 0h2c0-2.76-2.24-5-5-5v2c1.66 0 3 1.34 3 3z"/></svg>
+          </div>
+          <div class="support-title">HỖ TRỢ ĐẶT MUA</div>
+          <div class="support-phone-num">0982 801 051</div>
+          <div class="support-time">(8:00 - 21:00 hàng ngày)</div>
+        </div>
+      </aside>
+
+      <!-- ====================================================
+           CỘT GIỮA: MỞ RỘNG TO RA VÀ NỔI BẬT "SÁCH MỚI PHÁT HÀNH"
+           ==================================================== -->
+      <section class="col-center">
+        <!-- KHUNG "SÁCH MỚI PHÁT HÀNH" TO RA NỔI BẬT -->
+        <div class="news-card-featured">
+          <div class="news-card-header-large">
+            <div class="news-badge-title-large">
+              <span>🎄 SÁCH MỚI PHÁT HÀNH</span>
+              <span class="festive-tag">Đón Giáng Sinh</span>
+            </div>
+            <span style="font-size: 12px; color: #78716c;">Tuyển chọn tuần này</span>
+          </div>
+
+          <!-- Lưới 4 đầu sách mới to, rõ ràng, trực quan -->
+          <div class="featured-new-books-grid">
+            <!-- Sách mới 1 -->
+            <div class="featured-new-book-card">
+              <div class="featured-thumb" onclick="openBookDetailModal(3)" style="cursor: pointer;" title="Bấm xem mô tả chi tiết">
+                <img src="Upload/KT0001.jpg" alt="Tiền Tệ, Ngân Hàng">
+              </div>
+              <div class="featured-info">
+                <div>
+                  <span class="featured-cat" onclick="quickFilterNews('kinhte')" style="cursor: pointer;">Kinh tế</span>
+                  <div class="featured-title" onclick="openBookDetailModal(3)" style="cursor: pointer;" title="Bấm xem mô tả chi tiết">Tiền Tệ, Ngân Hàng, Thị Trường Tài Chính</div>
+                </div>
+                <div class="featured-price-row">
+                  <span class="featured-price">16.800 đ</span>
+                  <button type="button" class="btn-buy-modern" style="padding: 5px 10px; font-size: 11px;" onclick="addToCart(3)">
+                    <span>+ Mua</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sách mới 2 -->
+            <div class="featured-new-book-card">
+              <div class="featured-thumb" onclick="openBookDetailModal(9)" style="cursor: pointer;" title="Bấm xem mô tả chi tiết">
+                <img src="Upload/TH002.jpg" alt="Photoshop CS">
+              </div>
+              <div class="featured-info">
+                <div>
+                  <span class="featured-cat" onclick="quickFilterNews('tinhoc')" style="cursor: pointer;">Tin học</span>
+                  <div class="featured-title" onclick="openBookDetailModal(9)" style="cursor: pointer;" title="Bấm xem mô tả chi tiết">Hướng Dẫn Tự Học Photoshop CS (8.0)</div>
+                </div>
+                <div class="featured-price-row">
+                  <span class="featured-price">55.000 đ</span>
+                  <button type="button" class="btn-buy-modern" style="padding: 5px 10px; font-size: 11px;" onclick="addToCart(9)">
+                    <span>+ Mua</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sách mới 3 -->
+            <div class="featured-new-book-card">
+              <div class="featured-thumb" onclick="openBookDetailModal(10)" style="cursor: pointer;" title="Bấm xem mô tả chi tiết">
+                <img src="Upload/Oracle.jpg" alt="Oracle 9i">
+              </div>
+              <div class="featured-info">
+                <div>
+                  <span class="featured-cat" onclick="quickFilterNews('tinhoc')" style="cursor: pointer;">Tin học</span>
+                  <div class="featured-title" onclick="openBookDetailModal(10)" style="cursor: pointer;" title="Bấm xem mô tả chi tiết">Thành Thạo Oracle 9i - Quản Trị CSDL</div>
+                </div>
+                <div class="featured-price-row">
+                  <span class="featured-price">68.000 đ</span>
+                  <button type="button" class="btn-buy-modern" style="padding: 5px 10px; font-size: 11px;" onclick="addToCart(10)">
+                    <span>+ Mua</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sách mới 4 -->
+            <div class="featured-new-book-card">
+              <div class="featured-thumb" onclick="openBookDetailModal(18)" style="cursor: pointer;" title="Bấm xem mô tả chi tiết">
+                <img src="Upload/Me.jpg" alt="Thai Nghén & Sinh Nở">
+              </div>
+              <div class="featured-info">
+                <div>
+                  <span class="featured-cat" onclick="quickFilterNews('yhoc')" style="cursor: pointer;">Y học</span>
+                  <div class="featured-title" onclick="openBookDetailModal(18)" style="cursor: pointer;" title="Bấm xem mô tả chi tiết">Thai Nghén Và Sinh Nở (Cẩm Nang Mẹ)</div>
+                </div>
+                <div class="featured-price-row">
+                  <span class="featured-price">42.000 đ</span>
+                  <button type="button" class="btn-buy-modern" style="padding: 5px 10px; font-size: 11px;" onclick="addToCart(18)">
+                    <span>+ Mua</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Các tựa sách mới bổ sung -->
+          <div class="more-news-list">
+            <a href="javascript:void(0)" class="more-news-item" onclick="quickFilterNews('tinhoc')">
+              <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+              <span>Nhập Môn Microsoft Windows XP Cơ Bản - Giáo trình trường ĐH CN Việt - Hung</span>
+            </a>
+            <a href="javascript:void(0)" class="more-news-item" onclick="quickFilterNews('ngoaingu')">
+              <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+              <span>30 Phút Mỗi Ngày Để Luyện Kỹ Năng Viết Câu Tiếng Anh - Tái bản mới nhất</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Banner khuyến mãi trung tâm -->
+        <div class="hero-promo-banner">
+          <div class="hero-banner-content">
+            <span class="hero-tag">ƯU ĐÃI ĐỘC QUYỀN</span>
+            <div class="hero-title">ĐẠI TIỆC SÁCH XUÂN 2026 - GIẢM ĐẾN 50%</div>
+            <div class="hero-sub">Áp dụng cho mọi đầu sách Kinh tế, Tin học, Ngoại ngữ và Giáo trình chuyên khảo</div>
+          </div>
+          <div class="hero-coupon-box">
+            <div class="coupon-code">BOOK50</div>
+            <div class="coupon-desc">Quét mã QR thanh toán nhận thêm quà</div>
+          </div>
+        </div>
+
+        <!-- Thanh tiêu đề danh mục -->
+        <div class="section-heading-bar">
+          <div class="heading-title-group">
+            <span>Danh mục sách:</span>
+            <span id="currentCategoryTitle" class="active-topic">Tất cả sách</span>
+          </div>
+          <span id="categoryBookCount" class="heading-book-count">(0 cuốn)</span>
+        </div>
+
+        <!-- DANH SÁCH CUỐN SÁCH -->
+        <div class="books-grid" id="booksGrid">
+          <!-- Hiển thị động các thẻ sách -->
+        </div>
+      </section>
+
+      <!-- ====================================================
+           CỘT PHẢI: THU NHỎ GỌN GÀNG (195px)
+           ==================================================== -->
+      <aside class="col-right">
+        <!-- Khung Giỏ hàng gọn gàng -->
+        <div class="cart-card-widget">
+          <div class="cart-card-header">
+            <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+            <span>GIỎ HÀNG CỦA BẠN</span>
+          </div>
+          <div class="cart-card-body">
+            <div class="cart-data-row">
+              <span class="cart-label">Số lượng:</span>
+              <span id="cartCountDisplay" class="cart-value-count">0 cuốn</span>
+            </div>
+            <div class="cart-data-row">
+              <span class="cart-label">Tổng tiền:</span>
+              <span id="cartTotalDisplay" class="cart-value-total">0 đ</span>
+            </div>
+
+            <div class="cart-btn-grid">
+              <button type="button" class="btn-pay-now" onclick="startCheckout()">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+                <span>Thanh toán mã QR</span>
+              </button>
+              <div class="cart-sub-actions">
+                <button type="button" class="btn-cart-secondary" onclick="openCartModal()">Chi tiết</button>
+                <button type="button" class="btn-cart-secondary clear" onclick="clearCart()">Xóa giỏ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Khối đối tác liên kết -->
+        <div class="partner-ads-box">
+          <div class="ads-header-bar">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            <span>ĐỐI TÁC LIÊN KẾT</span>
+          </div>
+          <div class="ads-items-column">
+            <a href="javascript:void(0)" class="ad-banner-link" title="Ben Computer">
+              <img src="Upload/QC_BEN.png" alt="Ben Computer">
+            </a>
+            <a href="javascript:void(0)" class="ad-banner-link" title="Linktam">
+              <img src="Upload/QC_LT.png" alt="Linktam">
+            </a>
+            <a href="javascript:void(0)" class="ad-banner-link" title="Chứng khoán Biển Việt">
+              <img src="Upload/QC_CBV.png" alt="Chứng khoán Biển Việt">
+            </a>
+            <a href="javascript:void(0)" class="ad-banner-link" title="Hà Nội Computer">
+              <img src="Upload/HaNoiCom.png" alt="Hà Nội Computer">
+            </a>
+          </div>
+        </div>
+      </aside>
+
+    </main>
+
+    <!-- ========================================================
+       4. FOOTER: BẢN QUYỀN NHÀ SÁCH
+       ======================================================== -->
+    <footer class="footer">
+      <div class="footer-columns">
+        <div class="footer-col">
+          <h4>NHÀ SÁCH TRƯỜNG ĐẠI HỌC CN VIỆT - HUNG</h4>
+          <p><strong>Cơ quan chủ quản:</strong> Trường Đại học Công nghiệp Việt - Hưng</p>
+          <p><strong>Địa chỉ:</strong> 16 Xuân Khanh, Sơn Tây, Hà Nội</p>
+          <p><strong>Hotline:</strong> 0982 801 051 - Hỗ trợ khách hàng: (024) 3838 8888</p>
+          <p><strong>Email:</strong> lienhe@bookonline.edu.vn | Website: www.bookonline.vn</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>CHÍNH SÁCH BÁN HÀNG</h4>
+          <p>• Giao hàng toàn quốc</p>
+          <p>• Đổi trả sách trong 7 ngày</p>
+          <p>• Thanh toán qua mã QR Vietcombank</p>
+          <p>• Cam kết sách chính hãng 100%</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>HỖ TRỢ KHÁCH HÀNG</h4>
+          <p>• Hướng dẫn mua hàng trực tuyến</p>
+          <p>• Phương thức thanh toán linh hoạt</p>
+          <p>• Tra cứu tình trạng đơn hàng</p>
+          <p>• Hỗ trợ sinh viên &amp; giảng viên</p>
+        </div>
+      </div>
+
+      <div class="footer-copyright-row">
+        Bản quyền thuộc về Book Online © 2026. Mọi quyền được bảo lưu.
+      </div>
+    </footer>
+  </div>
+
+  <!-- ========================================================
+       MODAL MÃ QR THANH TOÁN (VIETCOMBANK)
+       ======================================================== -->
+  <div class="modal-overlay" id="qrPaymentModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span>THANH TOÁN ĐƠN HÀNG QUA MÃ QR</span>
+        <button class="modal-close-btn" onclick="closeModal('qrPaymentModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="qr-modal-container">
+          <div class="qr-image-wrapper">
+            <img src="qr_code_card.png" alt="Mã QR thanh toán Vietcombank">
+            <div style="font-size: 11px; color: #6b7280; margin-top: 6px; font-weight: 600;">Quét mã chuyển tiền qua App Ngân hàng</div>
+          </div>
+
+          <div class="qr-info-wrapper">
+            <div class="qr-info-box">
+              <div class="bank-info-row">
+                <span class="bank-label">Ngân hàng:</span>
+                <span class="bank-val">Vietcombank</span>
+              </div>
+              <div class="bank-info-row">
+                <span class="bank-label">Số tài khoản:</span>
+                <span class="bank-val">
+                  <span id="qrAccNum">9982801051</span>
+                  <button class="btn-copy-chip" onclick="copyText('9982801051')">Sao chép</button>
+                </span>
+              </div>
+              <div class="bank-info-row">
+                <span class="bank-label">Chủ tài khoản:</span>
+                <span class="bank-val">NGUYEN NGOC KHANH</span>
+              </div>
+              <div class="bank-info-row">
+                <span class="bank-label">Chi nhánh:</span>
+                <span class="bank-val">PGD Sóc Sơn</span>
+              </div>
+              <div class="bank-info-row">
+                <span class="bank-label">Số lượng sách:</span>
+                <span class="bank-val" id="qrCountDisplay">0 cuốn</span>
+              </div>
+              <div class="bank-info-row">
+                <span class="bank-label">Số tiền cần trả:</span>
+                <span class="bank-val highlight-price" id="qrAmountDisplay">0 đ</span>
+              </div>
+              <div class="bank-info-row">
+                <span class="bank-label">Nội dung chuyển khoản:</span>
+                <span class="bank-val">
+                  <span id="qrOrderCode">BOOK 801051</span>
+                  <button class="btn-copy-chip" onclick="copyText(document.getElementById('qrOrderCode').textContent)">Sao chép</button>
+                </span>
+              </div>
+            </div>
+
+            <div class="qr-guide-banner">
+              📌 <strong>Hướng dẫn:</strong> Quý khách dùng ứng dụng ngân hàng bất kỳ quét mã QR bên cạnh. Sau khi chuyển khoản thành công, bấm nút <strong>"Xác nhận đã thanh toán"</strong> bên dưới.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-cart-secondary" style="padding: 7px 14px;" onclick="closeModal('qrPaymentModal'); openCartModal();">Quay lại giỏ</button>
+        <button class="btn-pay-now" onclick="confirmQRPayment()">✓ Xác nhận đã thanh toán</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       MODAL MÔ TẢ CHI TIẾT SÁCH (BOOK DETAIL POPUP)
+       ======================================================== -->
+  <div class="modal-overlay" id="bookDetailModal">
+    <div class="modal-box book-detail-modal-box">
+      <div class="modal-header">
+        <span id="detailModalHeaderTitle">📖 CHI TIẾT CUỐN SÁCH</span>
+        <button class="modal-close-btn" onclick="closeModal('bookDetailModal')">&times;</button>
+      </div>
+      <div class="modal-body book-detail-body" id="bookDetailModalContent">
+        <!-- Render động bằng JS khi bấm vào cuốn sách -->
+      </div>
+      <div class="modal-footer" id="bookDetailModalFooter" style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 12px; color: #6b7280;">Hotline tư vấn đặt sách: <strong>0982 801 051</strong></span>
+        <button class="btn-cart-secondary" style="padding: 7px 16px;" onclick="closeModal('bookDetailModal')">Đóng</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL CHI TIẾT GIỎ HÀNG -->
+  <div class="modal-overlay" id="cartModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span>GIỎ HÀNG CỦA BẠN</span>
+        <button class="modal-close-btn" onclick="closeModal('cartModal')">&times;</button>
+      </div>
+      <div class="modal-body" id="cartModalBody">
+      </div>
+      <div class="modal-footer">
+        <button class="btn-cart-secondary clear" style="padding: 7px 14px;" onclick="clearCart(); closeModal('cartModal');">Xóa giỏ</button>
+        <button class="btn-pay-now" onclick="startCheckout()">Thanh toán qua mã QR</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL GIỚI THIỆU -->
+  <div class="modal-overlay" id="introModal">
+    <div class="modal-box" style="max-width: 500px;">
+      <div class="modal-header">
+        <span>GIỚI THIỆU VỀ BOOK ONLINE</span>
+        <button class="modal-close-btn" onclick="closeModal('introModal')">&times;</button>
+      </div>
+      <div class="modal-body" style="font-size: 13.5px; line-height: 1.7;">
+        <p style="margin-bottom: 10px;"><strong>Nhà sách trường Đại học CN Việt - Hung</strong> là địa chỉ uy tín chuyên cung cấp các đầu sách giáo trình, kinh tế, công nghệ thông tin, ngoại ngữ và văn học chọn lọc.</p>
+        <p style="margin-bottom: 10px;">Chúng tôi cam kết 100% sách có bản quyền, mức chiết khấu hấp dẫn và giao hàng nhanh chóng trên toàn quốc.</p>
+        <p>Hân hạnh được đồng hành cùng bạn đọc trên con đường học tập và khám phá tri thức!</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-pay-now" onclick="closeModal('introModal')">Đóng</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL HƯỚNG DẪN -->
+  <div class="modal-overlay" id="guideModal">
+    <div class="modal-box" style="max-width: 500px;">
+      <div class="modal-header">
+        <span>HƯỚNG DẪN MUA HÀNG &amp; THANH TOÁN</span>
+        <button class="modal-close-btn" onclick="closeModal('guideModal')">&times;</button>
+      </div>
+      <div class="modal-body" style="font-size: 13.5px; line-height: 1.8;">
+        <ol style="padding-left: 20px;">
+          <li>Chọn chủ đề sách ở cột trái hoặc nhập tên sách vào ô tìm kiếm.</li>
+          <li>Bấm nút <strong>"Chọn mua"</strong> tại các cuốn sách yêu thích.</li>
+          <li>Khung <strong>Giỏ hàng</strong> bên phải sẽ tự động cập nhật số lượng và tổng tiền.</li>
+          <li>Nhấn <strong>"Thanh toán mã QR"</strong> để quét mã Vietcombank tiện lợi và xác nhận đơn hàng.</li>
+        </ol>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-pay-now" onclick="closeModal('guideModal')">Đã hiểu</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL ĐĂNG NHẬP -->
+  <div class="modal-overlay" id="loginModal">
+    <div class="modal-box" style="max-width: 380px;">
+      <div class="modal-header">
+        <span>ĐĂNG NHẬP TÀI KHOẢN</span>
+        <button class="modal-close-btn" onclick="closeModal('loginModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="handleLogin(event)">
+          <div style="margin-bottom: 12px;">
+            <label style="display: block; font-weight: 600; margin-bottom: 4px; font-size: 13px;">Tên đăng nhập / Email:</label>
+            <input type="text" id="loginUsername" required style="width: 100%; padding: 8px 10px; border: 1px solid #d1d5db; border-radius: 6px; outline: none;">
+          </div>
+          <div style="margin-bottom: 16px;">
+            <label style="display: block; font-weight: 600; margin-bottom: 4px; font-size: 13px;">Mật khẩu:</label>
+            <input type="password" id="loginPassword" required style="width: 100%; padding: 8px 10px; border: 1px solid #d1d5db; border-radius: 6px; outline: none;">
+          </div>
+          <button type="submit" class="btn-pay-now" style="width: 100%;">Đăng nhập</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST THÔNG BÁO -->
+  <div id="toastNotification" class="toast">
+    <span>✓ Đã thêm sách vào giỏ hàng thành công!</span>
+  </div>
+
+  <!-- ========================================================
+       JAVASCRIPT: HIỆU ỨNG TUYẾT RƠI, ĐĨA NHẠC GIÁNG SINH, LỌC & GIỎ HÀNG
+       ======================================================== -->
+  <script>
+    /* ========================================================
+       1. HIỆU ỨNG TUYẾT RƠI GIÁNG SINH (CANVAS SNOW)
+       ======================================================== */
+    const snowCanvas = document.getElementById('snowCanvas');
+    const ctx = snowCanvas.getContext('2d');
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    snowCanvas.width = width;
+    snowCanvas.height = height;
+
+    window.addEventListener('resize', () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      snowCanvas.width = width;
+      snowCanvas.height = height;
+    });
+
+    const snowflakes = [];
+    const snowflakeCount = 60;
+
+    for (let i = 0; i < snowflakeCount; i++) {
+      snowflakes.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        r: Math.random() * 3.5 + 1.2,
+        speedY: Math.random() * 1.5 + 0.6,
+        speedX: Math.random() * 0.8 - 0.4,
+        opacity: Math.random() * 0.7 + 0.3
+      });
+    }
+
+    function renderSnow() {
+      ctx.clearRect(0, 0, width, height);
+      ctx.fillStyle = '#ffffff';
+
+      snowflakes.forEach(flake => {
+        ctx.beginPath();
+        ctx.arc(flake.x, flake.y, flake.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${flake.opacity})`;
+        ctx.fill();
+
+        flake.y += flake.speedY;
+        flake.x += flake.speedX + Math.sin(flake.y * 0.01) * 0.3;
+
+        if (flake.y > height) {
+          flake.y = -5;
+          flake.x = Math.random() * width;
+        }
+        if (flake.x > width) flake.x = 0;
+        if (flake.x < 0) flake.x = width;
+      });
+
+      requestAnimationFrame(renderSnow);
+    }
+    renderSnow();
+
+    /* ========================================================
+       2. TIẾNG CHUÔNG XE TUẦN LỘC & ÔNG GIÀ NOEL BAY QUA MÀN HÌNH
+       ======================================================== */
+    let audioCtx = null;
+    let sleighActiveSources = [];
+    let isSleighRinging = false;
+
+    function initAudioContext() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    // Đảm bảo mở khóa âm thanh khi người dùng click bất kỳ đâu trên trang
+    document.addEventListener('click', () => {
+      initAudioContext();
+    }, { once: false });
+
+    // TỔNG HỢP TIẾNG CHUÔNG XE TUẦN LỘC (SLEIGH BELLS) BẰNG WEB AUDIO API
+    function playSleighBellsJingle(durationSeconds = 10) {
+      const ctx = initAudioContext();
+      if (!ctx) return;
+
+      stopSleighBells();
+      isSleighRinging = true;
+
+      const now = ctx.currentTime;
+      const masterGain = ctx.createGain();
+      masterGain.connect(ctx.destination);
+
+      // Hiệu ứng Doppler âm lượng: xe tuần lộc từ xa bay tới gần (to dần) rồi bay đi xa dần (nhỏ dần)
+      masterGain.gain.setValueAtTime(0.001, now);
+      masterGain.gain.linearRampToValueAtTime(0.35, now + 3.0);
+      masterGain.gain.setValueAtTime(0.35, now + 6.0);
+      masterGain.gain.linearRampToValueAtTime(0.001, now + durationSeconds);
+
+      // Cụm tần số chuông đồng leng keng (Sleigh Jingle Bells Cluster)
+      const bellFreqs = [2420, 3080, 3750, 4320, 5150, 6200];
+      const shakeInterval = 0.38;
+      const totalShakes = Math.floor(durationSeconds / shakeInterval);
+
+      for (let i = 0; i < totalShakes; i++) {
+        const shakeTime = now + (i * shakeInterval);
+        // Nhịp lắc đôi ("reng reng", "leng keng" theo nhịp phi nước đại)
+        [0, 0.07].forEach((subOffset, pIdx) => {
+          const pTime = shakeTime + subOffset;
+          const pulseVolume = pIdx === 0 ? 1.0 : 0.72;
+
+          bellFreqs.forEach((freq, fIdx) => {
+            const osc = ctx.createOscillator();
+            const bGain = ctx.createGain();
+
+            // Độ lệch âm nhẹ tạo độ vang kim loại tự nhiên
+            const detune = Math.random() * 60 - 30;
+            osc.type = fIdx % 2 === 0 ? 'sine' : 'triangle';
+            osc.frequency.setValueAtTime(freq + detune, pTime);
+
+            const decay = 0.05 + Math.random() * 0.04;
+            bGain.gain.setValueAtTime(0.0001, pTime);
+            bGain.gain.linearRampToValueAtTime(0.055 * pulseVolume, pTime + 0.004);
+            bGain.gain.exponentialRampToValueAtTime(0.0001, pTime + decay);
+
+            osc.connect(bGain);
+            bGain.connect(masterGain);
+
+            osc.start(pTime);
+            osc.stop(pTime + decay + 0.03);
+            sleighActiveSources.push(osc);
+          });
+        });
+      }
+
+      setTimeout(() => {
+        isSleighRinging = false;
+      }, durationSeconds * 1000);
+    }
+
+    function stopSleighBells() {
+      sleighActiveSources.forEach(s => {
+        try { s.stop(); } catch (e) {}
+      });
+      sleighActiveSources = [];
+      isSleighRinging = false;
+    }
+
+    // KÍCH HOẠT ÔNG GIÀ NOEL CƯỠI TUẦN LỘC BAY QUA MÀN HÌNH
+    function triggerSantaFlyby() {
+      const container = document.getElementById('santaSleighContainer');
+      if (!container) return;
+
+      initAudioContext();
+
+      // Khởi động lại animation bay
+      container.classList.remove('flying');
+      void container.offsetWidth; // Buộc trình duyệt reflow
+      container.classList.add('flying');
+
+      // Phát tiếng chuông xe tuần lộc leng keng đồng bộ
+      playSleighBellsJingle(10);
+      showToast("🎅 Ông già Noel & đàn tuần lộc đang bay qua! 🔔✨");
+    }
+
+    // Tự động cho ông già Noel bay qua sau 2.5s đầu tiên và lặp lại định kỳ mỗi 32s
+    setTimeout(() => {
+      triggerSantaFlyby();
+    }, 2500);
+
+    setInterval(() => {
+      triggerSantaFlyby();
+    }, 32000);
+
+    /* ========================================================
+       3. ĐĨA NHẠC GIÁNG SINH & PHÁT VIDEO YOUTUBE (MARIAH CAREY)
+       ======================================================== */
+    let isMusicPlaying = false;
+
+    function toggleYtPlayerCard(forceState) {
+      const card = document.getElementById('ytPlayerContainer');
+      if (!card) return;
+      if (typeof forceState === 'boolean') {
+        if (forceState) card.classList.remove('collapsed');
+        else card.classList.add('collapsed');
+      } else {
+        card.classList.toggle('collapsed');
+      }
+    }
+
+    function playYouTube() {
+      const iframe = document.getElementById('ytMusicIframe');
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+      }
+    }
+
+    function pauseYouTube() {
+      const iframe = document.getElementById('ytMusicIframe');
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+      }
+    }
+
+    function setVinylState(playing) {
+      isMusicPlaying = playing;
+      const playerEl = document.getElementById('xmasMusicPlayer');
+      const statusText = document.getElementById('playerStatusHint');
+      const iconEl = document.getElementById('playPauseIcon');
+
+      if (playing) {
+        playerEl.classList.add('playing');
+        if (statusText) statusText.textContent = 'Đang phát: All I Want for Christmas Is You 🎵';
+        if (iconEl) iconEl.textContent = '⏸';
+      } else {
+        playerEl.classList.remove('playing');
+        if (statusText) statusText.textContent = 'Mariah Carey • Bấm để nghe nhạc 🔔';
+        if (iconEl) iconEl.textContent = '▶';
+      }
+    }
+
+    function toggleXmasMusic() {
+      initAudioContext();
+
+      if (isMusicPlaying) {
+        pauseYouTube();
+        setVinylState(false);
+        showToast('Đã tạm dừng bài hát Giáng Sinh.');
+      } else {
+        playYouTube();
+        setVinylState(true);
+        // Tự động mở khung video nếu đang thu nhỏ để tiện theo dõi
+        const card = document.getElementById('ytPlayerContainer');
+        if (card && card.classList.contains('collapsed')) {
+          card.classList.remove('collapsed');
+        }
+        showToast('🎄 Đang phát: All I Want For Christmas Is You - Mariah Carey 🎵');
+      }
+    }
+
+    // Lắng nghe sự kiện từ YouTube Player để đồng bộ đĩa than khi bấm Play trực tiếp trên video
+    window.addEventListener('message', function(event) {
+      try {
+        let data = event.data;
+        if (typeof data === 'string') {
+          data = JSON.parse(data);
+        }
+        if (data && data.event === 'infoDelivery' && data.info) {
+          if (data.info.playerState === 1) { // 1 = Đang phát
+            setVinylState(true);
+          } else if (data.info.playerState === 2 || data.info.playerState === 0) { // 2 = Tạm dừng, 0 = Kết thúc
+            setVinylState(false);
+          }
+        }
+      } catch (err) {}
+    });
+
+    /* ========================================================
+       3. DỮ LIỆU SÁCH VÀ DANH MỤC
+       ======================================================== */
+    const categoriesData = [
+      { id: 'all', name: 'Tất cả sách' },
+      { id: 'kinhte', name: 'Kinh tế' },
+      { id: 'tinhoc', name: 'Tin học' },
+      { id: 'ngoaingu', name: 'Ngoại ngữ' },
+      { id: 'vanhocgiangian', name: 'Văn học dân gian' },
+      { id: 'vanhocnuocngoai', name: 'Văn học nước ngoài' },
+      { id: 'ketoan', name: 'Kế toán' },
+      { id: 'yhoc', name: 'Y học' },
+      { id: 'nghethuat', name: 'Nghệ thuật' },
+      { id: 'khoahockythuat', name: 'Khoa học kỹ thuật' },
+      { id: 'luat', name: 'Luật' },
+      { id: 'lichsu', name: 'Lịch sử - Địa lý' },
+      { id: 'sachgiaokhoa', name: 'Sách giáo khoa' }
+    ];
+
+    const booksData = [
+      {
+        id: 1,
+        title: "Phong Cách Quản Lý Kinh Doanh Hiện Đại",
+        category: "kinhte",
+        categoryName: "Kinh tế",
+        price: 61000,
+        oldPrice: 75000,
+        discount: "-19%",
+        image: "Upload/KT0001.jpg",
+        author: "Jack Welch & Suzy Welch (Dịch: TS. Lê Văn Tuấn)",
+        publisher: "NXB Kinh Tế Quốc Dân",
+        pages: 420,
+        publishYear: "2024",
+        dimensions: "16 x 24 cm",
+        coverType: "Bìa mềm",
+        isbn: "978-604-922-101-2",
+        description: "Cuốn sách đúc kết những nguyên lý quản trị tinh hoa và phong cách lãnh đạo linh hoạt trong kỷ nguyên số. Tác giả phân tích sâu sắc cách thức xây dựng văn hóa doanh nghiệp cởi mở, tối ưu hóa quy trình ra quyết định và truyền cảm hứng mạnh mẽ cho đội ngũ nhân sự.",
+        highlights: [
+          "Chiến lược phát triển văn hóa doanh nghiệp hướng tới hiệu suất cao",
+          "Kỹ năng ra quyết định nhanh chóng trong môi trường cạnh tranh khốc liệt",
+          "Nghệ thuật truyền cảm hứng và giữ chân nhân tài hàng đầu",
+          "Phương pháp giải quyết xung đột nội bộ và đổi mới sáng tạo"
+        ],
+        targetAudience: "Nhà quản lý, CEO, Trưởng bộ phận và sinh viên chuyên ngành Quản trị Kinh doanh."
+      },
+      {
+        id: 2,
+        title: "Từ Xiaton Đến Đôha - Toàn Cầu Hóa Và WTO",
+        category: "kinhte",
+        categoryName: "Kinh tế",
+        price: 25000,
+        oldPrice: 32000,
+        discount: "-22%",
+        image: "Upload/KT0005.jpg",
+        author: "PGS. TS. Nguyễn Như Phát & Nhóm Chuyên Gia Thương Mại",
+        publisher: "NXB Chính Trị Quốc Gia Sự Thật",
+        pages: 368,
+        publishYear: "2023",
+        dimensions: "14.5 x 20.5 cm",
+        coverType: "Bìa mềm",
+        isbn: "978-604-57-8902-1",
+        description: "Tác phẩm khắc họa bức tranh toàn cảnh về tiến trình toàn cầu hóa kinh tế thế giới qua các mốc lịch sử từ Hội nghị Seattle đến vòng đàm phán Doha của WTO. Cuốn sách phân tích thấu đáo các cơ hội vàng và thách thức lớn đối với nền kinh tế mở của Việt Nam.",
+        highlights: [
+          "Bối cảnh lịch sử hình thành và phát triển của các vòng đàm phán WTO",
+          "Tác động sâu rộng của toàn cầu hóa tới các nền kinh tế đang phát triển",
+          "Chiến lược thích ứng của doanh nghiệp Việt Nam khi hội nhập sâu rộng",
+          "Các bài học kinh nghiệm quốc tế về giải quyết tranh chấp thương mại"
+        ],
+        targetAudience: "Chuyên viên đối ngoại, luật sư kinh tế, sinh viên ngành Kinh tế đối ngoại và Quan hệ quốc tế."
+      },
+      {
+        id: 3,
+        title: "Tiền Tệ, Ngân Hàng, Thị Trường Tài Chính",
+        category: "kinhte",
+        categoryName: "Kinh tế",
+        price: 16800,
+        oldPrice: 22000,
+        discount: "-24%",
+        image: "Upload/KT0001.jpg",
+        author: "Frederic S. Mishkin (Viện Nghiên Cứu Ngân Hàng dịch)",
+        publisher: "NXB Đại Học Kinh Tế Quốc Dân",
+        pages: 580,
+        publishYear: "2024",
+        dimensions: "19 x 27 cm",
+        coverType: "Bìa mềm cao cấp",
+        isbn: "978-604-922-304-7",
+        description: "Giáo trình kinh điển được giảng dạy tại hầu hết các trường đại học tài chính danh tiếng trên thế giới. Cuốn sách giải thích tường minh cơ chế vận hành của cung tiền, lãi suất, chính sách tiền tệ của Ngân hàng Trung ương và cấu trúc các thị trường vốn, cổ phiếu, trái phiếu và phái sinh.",
+        highlights: [
+          "Cơ chế xác định lãi suất và phân tích cấu trúc rủi ro kỳ hạn",
+          "Vai trò và công cụ điều hành chính sách tiền tệ của Ngân hàng Nhà nước",
+          "Mô hình hoạt động của các tổ chức trung gian tài chính và ngân hàng thương mại",
+          "Cách thức phòng ngừa rủi ro tỷ giá và rủi ro tín dụng hiện đại"
+        ],
+        targetAudience: "Sinh viên chuyên ngành Ngân hàng, Tài chính doanh nghiệp, nhà đầu tư chứng khoán và chuyên viên tín dụng."
+      },
+      {
+        id: 4,
+        title: "Khác Biệt Hay Là Chết (Xây Dựng Thương Hiệu Vững Mạnh)",
+        category: "kinhte",
+        categoryName: "Kinh tế",
+        price: 18000,
+        oldPrice: 25000,
+        discount: "-28%",
+        image: "Upload/KT0006.jpg",
+        author: "Jack Trout & Steve Rivkin",
+        publisher: "NXB Trẻ",
+        pages: 310,
+        publishYear: "2024",
+        dimensions: "14 x 20.5 cm",
+        coverType: "Bìa mềm gập",
+        isbn: "978-604-1-18234-9",
+        description: "Trong một thị trường tràn ngập sản phẩm tương đồng, nếu không tạo ra được sự khác biệt mang tính định vị trong tâm trí khách hàng, doanh nghiệp của bạn sẽ bị lãng quên. Jack Trout chỉ rõ các chiến lược tìm kiếm và định hình điểm độc nhất (USP) giúp thương hiệu đứng vững.",
+        highlights: [
+          "Khái niệm định vị cốt lõi và quy luật nhận thức của người tiêu dùng",
+          "18 phương thức tạo dựng sự khác biệt rõ rệt so với đối thủ cạnh tranh",
+          "Phân tích các ca nghiên cứu thực tế thất bại và thành công lẫy lừng",
+          "Bí quyết duy trì sự khác biệt bền vững theo thời gian"
+        ],
+        targetAudience: "Marketer, Giám đốc thương hiệu, nhà sáng lập khởi nghiệp và người làm truyền thông."
+      },
+      {
+        id: 5,
+        title: "Quản Lý Đấu Thầu - Thực Trạng & Kinh Nghiệm Quốc Tế",
+        category: "kinhte",
+        categoryName: "Kinh tế",
+        price: 16800,
+        oldPrice: 20000,
+        discount: "-16%",
+        image: "Upload/KT0004.jpg",
+        author: "TS. Lê Đăng Doanh & Ban Quản Lý Đấu Thầu",
+        publisher: "NXB Tài Chính",
+        pages: 295,
+        publishYear: "2023",
+        dimensions: "16 x 24 cm",
+        coverType: "Bìa mềm",
+        isbn: "978-604-79-4512-3",
+        description: "Cuốn sách cung cấp cơ sở pháp lý và kinh nghiệm thực tiễn toàn diện về quy trình tổ chức, lập hồ sơ mời thầu, đánh giá hồ sơ dự thầu và quản lý hợp đồng mua sắm công. Tài liệu tham khảo vô cùng giá trị giúp tối ưu hóa ngân sách và giảm thiểu rủi ro pháp lý.",
+        highlights: [
+          "Hệ thống văn bản pháp luật về đấu thầu mới nhất hiện hành",
+          "Kỹ năng lập và thẩm định hồ sơ mời thầu chuẩn xác",
+          "Kinh nghiệm quốc tế về đấu thầu minh bạch và chống thông thầu",
+          "Giải quyết khiếu nại, kiến nghị trong hoạt động đấu thầu"
+        ],
+        targetAudience: "Cán bộ quản lý dự án, kỹ sư kinh tế xây dựng, tư vấn pháp lý và chuyên viên mua sắm."
+      },
+      {
+        id: 6,
+        title: "Tư Duy Chiến Lược Trong Kinh Doanh",
+        category: "kinhte",
+        categoryName: "Kinh tế",
+        price: 32000,
+        oldPrice: 40000,
+        discount: "-20%",
+        image: "Upload/KT0003.jpg",
+        author: "Michael E. Porter (Biên soạn: TS. Vũ Đình Lam)",
+        publisher: "NXB Lao Động - Xã Hội",
+        pages: 340,
+        publishYear: "2024",
+        dimensions: "15 x 23 cm",
+        coverType: "Bìa mềm",
+        isbn: "978-604-59-3321-4",
+        description: "Chiến lược không phải là làm tốt hơn những gì đối thủ đang làm, mà là chọn một con đường khác biệt để tạo ra giá trị độc đáo. Cuốn sách diễn giải cô đọng mô hình 5 áp lực cạnh tranh, chuỗi giá trị và các chiến lược dẫn đầu chi phí, khác biệt hóa.",
+        highlights: [
+          "Phân tích ma trận 5 áp lực cạnh tranh ngành của Porter",
+          "Mô hình chuỗi giá trị và các mắt xích tạo ra biên lợi nhuận cao",
+          "Chiến lược đại dương xanh và phá vỡ lối mòn tư duy truyền thống",
+          "Đo lường và điều chỉnh chiến lược thích ứng linh hoạt"
+        ],
+        targetAudience: "Chủ doanh nghiệp, cán bộ hoạch định chiến lược và sinh viên ngành Quản trị."
+      },
+      {
+        id: 7,
+        title: "Quản Lý Dự Án Doanh Nghiệp Toàn Diện",
+        category: "kinhte",
+        categoryName: "Kinh tế",
+        price: 45000,
+        oldPrice: 55000,
+        discount: "-18%",
+        image: "Upload/KT0002.jpg",
+        author: "Harold Kerzner, Ph.D.",
+        publisher: "NXB Khoa Học Kỹ Thuật",
+        pages: 460,
+        publishYear: "2024",
+        dimensions: "16 x 24 cm",
+        coverType: "Bìa mềm",
+        isbn: "978-604-67-1120-8",
+        description: "Hướng dẫn thực hành quản trị dự án theo chuẩn PMI quốc tế. Từ khâu xác định mục tiêu, lập kế hoạch tiến độ (Gantt, CPM), phân bổ ngân sách, quản lý rủi ro đến kiểm soát chất lượng bàn giao công việc.",
+        highlights: [
+          "Khung năng lực quản trị dự án chuẩn PMP",
+          "Phương pháp quản lý tiến độ, chi phí EVM (Earned Value Management)",
+          "Kỹ thuật ứng phó và lập kế hoạch giảm thiểu rủi ro dự án",
+          "Quản lý truyền thông và kỳ vọng của các bên liên quan (Stakeholders)"
+        ],
+        targetAudience: "Project Manager, Scrum Master, kỹ sư quản lý và điều phối viên dự án."
+      },
+      {
+        id: 8,
+        title: "Lập Trình Mạng Trên Windows Toàn Tập",
+        category: "tinhoc",
+        categoryName: "Tin học",
+        price: 48000,
+        oldPrice: 60000,
+        discount: "-20%",
+        image: "Upload/TH001.jpg",
+        author: "Phạm Quang Huy - Nguyễn Phương Triều",
+        publisher: "NXB Thông Tin & Truyền Thông",
+        pages: 412,
+        publishYear: "2023",
+        dimensions: "16 x 24 cm",
+        coverType: "Bìa mềm",
+        isbn: "978-604-80-5561-2",
+        description: "Giáo trình lập trình mạng toàn diện hướng dẫn kiến trúc Windows Sockets (Winsock API), giao thức TCP/UDP, lập trình mạng đa luồng (multithreading), mô hình I/O phi đồng bộ (Overlapped I/O, IOCP). Kèm mã nguồn chi tiết từng bước.",
+        highlights: [
+          "Kiến trúc Socket API và cơ chế kết nối TCP/IP chuẩn xác",
+          "Kỹ thuật lập trình Client-Server đồng bộ và bất đồng bộ",
+          "Tối ưu hóa hiệu năng bằng mô hình hoàn tất I/O (IOCP)",
+          "Xử lý bảo mật socket và mã hóa dữ liệu truyền tải"
+        ],
+        targetAudience: "Kỹ sư phần mềm C++/C#, sinh viên Công nghệ thông tin và quản trị mạng."
+      },
+      {
+        id: 9,
+        title: "Giáo Trình Photoshop CS Tinh Chỉnh & Xử Lý Màu Đồ Họa",
+        category: "tinhoc",
+        categoryName: "Tin học",
+        price: 55000,
+        oldPrice: 70000,
+        discount: "-21%",
+        image: "Upload/TH002.jpg",
+        author: "Đậu Quang Tuấn",
+        publisher: "NXB Giao Thông Vận Tải",
+        pages: 380,
+        publishYear: "2024",
+        dimensions: "16 x 24 cm",
+        coverType: "Bìa mềm in màu",
+        isbn: "978-604-76-2210-9",
+        description: "Tài liệu học đồ họa từng bước từ căn bản đến nâng cao. Đi sâu vào các kỹ thuật tinh chỉnh màu sắc Curves, Levels, Color Balance, xử lý kênh màu Lab/CMYK chuyên nghiệp cho in ấn và phục chế ảnh kỹ thuật số.",
+        highlights: [
+          "Làm chủ các công cụ vùng chọn, pen tool và layer mask tinh tế",
+          "Nguyên lý phối màu, quản trị màu sắc RGB và CMYK chuẩn nhà in",
+          "Kỹ thuật retouch chân dung, làm mịn da và chỉnh ánh sáng tự nhiên",
+          "Các bài tập thiết kế poster, banner, bìa sách thực tế"
+        ],
+        targetAudience: "Người mới bắt đầu học thiết kế đồ họa, nhiếp ảnh gia và sinh viên ngành Mỹ thuật đa phương tiện."
+      },
+      {
+        id: 10,
+        title: "Thành Thạo Oracle 9i - Quản Trị Hệ Cơ Sở Dữ Liệu",
+        category: "tinhoc",
+        categoryName: "Tin học",
+        price: 68000,
+        oldPrice: 85000,
+        discount: "-20%",
+        image: "Upload/Oracle.jpg",
+        author: "TS. Đỗ Trung Tuấn",
+        publisher: "NXB Đại Học Quốc Gia Hà Nội",
+        pages: 485,
+        publishYear: "2024",
+        dimensions: "16 x 24 cm",
+        coverType: "Bìa mềm",
+        isbn: "978-604-62-9840-2",
+        description: "Khám phá kiến trúc chuyên sâu của hệ quản trị CSDL quan hệ hàng đầu thế giới Oracle. Hướng dẫn chi tiết cài đặt, cấu hình bộ nhớ SGA/PGA, quản trị Tablespace, phân quyền người dùng, lập trình PL/SQL và sao lưu phục hồi với RMAN.",
+        highlights: [
+          "Cấu trúc bộ nhớ và tiến trình nền tảng của Oracle Database Engine",
+          "Lập trình thủ tục lưu trữ, Trigger và Package với ngôn ngữ PL/SQL",
+          "Chiến lược sao lưu dự phòng phục hồi thảm họa với Oracle RMAN",
+          "Kỹ thuật giám sát và phân tích Execution Plan để tối ưu câu lệnh SQL"
+        ],
+        targetAudience: "Database Administrator (DBA), Backend Developer và sinh viên chuyên ngành Khoa học máy tính."
+      },
+      {
+        id: 11,
+        title: "Visual Basic 2005 - Lập Trình Web Với CSDL",
+        category: "tinhoc",
+        categoryName: "Tin học",
+        price: 52000,
+        oldPrice: 65000,
+        discount: "-20%",
+        image: "Upload/LTWeb2005.jpg",
+        author: "ThS. Hoàng Đức Hải",
+        publisher: "NXB Lao Động - Xã Hội",
+        pages: 375,
+        publishYear: "2023",
+        dimensions: "16 x 24 cm",
+        coverType: "Bìa mềm",
+        isbn: "978-604-59-1145-6",
+        description: "Hướng dẫn xây dựng các ứng dụng web tương tác cơ sở dữ liệu trên nền tảng Microsoft .NET Framework và ASP.NET. Sách trình bày chi tiết cách kết nối cơ sở dữ liệu qua ADO.NET, điều khiển Server Controls và quản lý Session/Cookie.",
+        highlights: [
+          "Cơ chế làm việc của ASP.NET Web Forms và vòng đời trang Page LifeCycle",
+          "Khai thác sức mạnh của ADO.NET: DataSet, DataReader, DataAdapter",
+          "Thiết kế giao diện web responsive kết hợp CSS và JavaScript",
+          "Xây dựng ứng dụng quản lý bán hàng online hoàn chỉnh"
+        ],
+        targetAudience: "Lập trình viên .NET, sinh viên làm đồ án tốt nghiệp ngành Tin học phần mềm."
+      },
+      {
+        id: 12,
+        title: "Nhập Môn Microsoft Windows XP Cơ Bản",
+        category: "tinhoc",
+        categoryName: "Tin học",
+        price: 28000,
+        oldPrice: 35000,
+        discount: "-20%",
+        image: "Upload/130318.jpg",
+        author: "Phạm Quang Huy",
+        publisher: "NXB Thống Kê",
+        pages: 230,
+        publishYear: "2022",
+        dimensions: "14.5 x 20.5 cm",
+        coverType: "Bìa mềm",
+        isbn: "978-604-61-0021-3",
+        description: "Giáo trình tin học đại cương nhập môn dành cho người mới tiếp cận máy vi tính. Hướng dẫn thao tác căn bản trên hệ điều hành Windows, quản lý tệp tin và thư mục, cài đặt phần mềm văn phòng và kết nối mạng Internet an toàn.",
+        highlights: [
+          "Thao tác chuột, bàn phím và giao diện máy tính chuẩn xác",
+          "Quản lý dữ liệu khoa học bằng Windows Explorer",
+          "Sử dụng các ứng dụng văn phòng và tiện ích hệ thống cơ bản",
+          "Kỹ năng duyệt web an toàn và phòng chống virus máy tính"
+        ],
+        targetAudience: "Học sinh, sinh viên năm nhất và người mới bắt đầu học sử dụng máy vi tính."
+      },
+      {
+        id: 13,
+        title: "Quản Lý Mạng LANs & WANs Chuyên Nghiệp",
+        category: "tinhoc",
+        categoryName: "Tin học",
+        price: 62000,
+        oldPrice: 78000,
+        discount: "-21%",
+        image: "Upload/130499.jpg",
+        author: "Mark A. Dye - Network Solutions Lab",
+        publisher: "NXB Thông Tin & Truyền Thông",
+        pages: 450,
+        publishYear: "2024",
+        dimensions: "16 x 24 cm",
+        coverType: "Bìa mềm",
+        isbn: "978-604-80-6712-7",
+        description: "Tài liệu chuyên sâu về thiết kế, triển khai và vận hành hệ thống mạng doanh nghiệp quy mô vừa và lớn. Bao quát kiến thức định tuyến RIP/OSPF/BGP, chuyển mạch VLAN, giao thức STP, cân bằng tải và VPN bảo mật.",
+        highlights: [
+          "Mô hình OSI và bộ giao thức TCP/IP ứng dụng thực tế",
+          "Cấu hình Router và Switch Cisco doanh nghiệp chuẩn mực",
+          "Kỹ thuật phân chia mạng con (Subnetting) và quy hoạch dải IP",
+          "Triển khai hệ thống tường lửa Firewall và mạng riêng ảo VPN an toàn"
+        ],
+        targetAudience: "Kỹ sư hạ tầng mạng (Network Engineer), quản trị viên hệ thống System Admin và sinh viên Mạng máy tính."
+      },
+      {
+        id: 14,
+        title: "30 Phút Mỗi Ngày Để Luyện Kỹ Năng Viết Câu Tiếng Anh",
+        category: "ngoaingu",
+        categoryName: "Ngoại ngữ",
+        price: 36000,
+        oldPrice: 45000,
+        discount: "-20%",
+        image: "Upload/TiengAnh01.jpg",
+        author: "Raymond Murphy (Biên soạn: Mai Lan Hương)",
+        publisher: "NXB Đà Nẵng",
+        pages: 260,
+        publishYear: "2024",
+        dimensions: "14.5 x 20.5 cm",
+        coverType: "Bìa mềm",
+        isbn: "978-604-84-3321-0",
+        description: "Phương pháp học viết câu tiếng Anh chuẩn xác, tự nhiên theo lộ trình 30 ngày. Cuốn sách giúp người học thoát khỏi thói quen dịch từng từ (Word-by-word), nắm vững cấu trúc ngữ pháp thông dụng và cách hành văn chuẩn bản ngữ.",
+        highlights: [
+          "30 chuyên đề ngữ pháp viết câu từ căn bản đến phức hợp",
+          "Phân tích hơn 200 lỗi sai người Việt thường gặp khi viết tiếng Anh",
+          "Hệ thống bài tập thực hành kèm đáp án giải thích chi tiết",
+          "Bộ từ vựng và cụm từ Collocation ăn điểm trong kỳ thi IELTS/TOEIC"
+        ],
+        targetAudience: "Học sinh, sinh viên, người đi làm muốn cải thiện kỹ năng viết email và bài luận tiếng Anh."
+      },
+      {
+        id: 15,
+        title: "Tuyển Tập Truyện Cổ Tích & Văn Học Dân Gian",
+        category: "vanhocgiangian",
+        categoryName: "Văn học dân gian",
+        price: 25000,
+        oldPrice: 30000,
+        discount: "-17%",
+        image: "Upload/KT0008.jpg",
+        author: "Viện Văn Học Dân Gian Việt Nam",
+        publisher: "NXB Văn Học",
+        pages: 320,
+        publishYear: "2023",
+        dimensions: "13 x 20.5 cm",
+        coverType: "Bìa mềm",
+        isbn: "978-604-954-118-2",
+        description: "Kho tàng truyện cổ tích, truyền thuyết và ca dao dân ca Việt Nam được tuyển chọn công phu. Những câu chuyện giàu tính nhân văn như Tấm Cám, Thạch Sanh, Sự tích Trầu Cau... bồi đắp tâm hồn trẻ thơ và tình yêu cội nguồn văn hóa dân tộc.",
+        highlights: [
+          "Tuyển tập hơn 50 câu chuyện cổ tích và ngụ ngôn kinh điển",
+          "Minh họa truyền cảm, giàu màu sắc văn hóa dân gian",
+          "Lời bình giảng súc tích về bài học đạo đức làm người",
+          "Ngôn ngữ trong sáng, giàu tính gợi cảm và nhạc điệu"
+        ],
+        targetAudience: "Phụ huynh, học sinh tiểu học, giáo viên tiểu học và độc giả yêu mến văn hóa Việt."
+      },
+      {
+        id: 16,
+        title: "Kiệt Tác Văn Học Nước Ngoài Chọn Lọc",
+        category: "vanhocnuocngoai",
+        categoryName: "Văn học nước ngoài",
+        price: 38000,
+        oldPrice: 48000,
+        discount: "-21%",
+        image: "Upload/KT0009.jpg",
+        author: "Nhiều Tác Giả Đoạt Giải Nobel Văn Học",
+        publisher: "NXB Hội Nhà Văn",
+        pages: 410,
+        publishYear: "2024",
+        dimensions: "14 x 21 cm",
+        coverType: "Bìa mềm có bìa áo",
+        isbn: "978-604-989-441-1",
+        description: "Tuyển tập những trích đoạn và truyện ngắn kiệt tác của nền văn học thế giới: Lev Tolstoy, Victor Hugo, Ernest Hemingway, O. Henry... Tác phẩm đưa bạn đọc qua những chiều kích sâu thẳm của số phận con người, khát vọng tự do và tình yêu thương.",
+        highlights: [
+          "Tuyển chọn tinh hoa của các đại văn hào thế giới",
+          "Bản dịch kinh điển của các dịch giả tài hoa Việt Nam",
+          "Phần giới thiệu bối cảnh lịch sử và tư tưởng nghệ thuật sâu sắc",
+          "Giá trị thẩm mỹ và giáo dục nhân văn bền vững với thời gian"
+        ],
+        targetAudience: "Tất cả bạn đọc yêu thích văn chương nghệ thuật kinh điển."
+      },
+      {
+        id: 17,
+        title: "Hướng Dẫn Kế Toán Doanh Nghiệp Vừa Và Nhỏ",
+        category: "ketoan",
+        categoryName: "Kế toán",
+        price: 49000,
+        oldPrice: 62000,
+        discount: "-21%",
+        image: "Upload/Kt.jpg",
+        author: "PGS. TS. Võ Văn Nhị",
+        publisher: "NXB Tài Chính",
+        pages: 390,
+        publishYear: "2024",
+        dimensions: "16 x 24 cm",
+        coverType: "Bìa mềm",
+        isbn: "978-604-79-5678-0",
+        description: "Cập nhật Thông tư 133/2016/TT-BTC mới nhất về chế độ kế toán doanh nghiệp nhỏ và vừa. Hướng dẫn hạch toán chi tiết tài sản, nguồn vốn, doanh thu, chi phí, lập Báo cáo tài chính và kê khai quyết toán thuế TNDN, TNCN, GTGT đúng quy định.",
+        highlights: [
+          "Hệ thống tài khoản kế toán áp dụng cho doanh nghiệp vừa và nhỏ",
+          "Quy trình hạch toán các nghiệp vụ kinh tế phát sinh thực tế",
+          "Kỹ thuật lập Bảng cân đối kế toán và Báo cáo lưu chuyển tiền tệ",
+          "Kinh nghiệm giải trình số liệu khi cơ quan thuế kiểm tra quyết toán"
+        ],
+        targetAudience: "Kế toán viên, kế toán trưởng, giám đốc doanh nghiệp SME và sinh viên ngành Kế toán - Kiểm toán."
+      },
+      {
+        id: 18,
+        title: "Thai Nghén Và Sinh Nở (Cẩm Nang Dành Cho Người Làm Mẹ)",
+        category: "yhoc",
+        categoryName: "Y học",
+        price: 42000,
+        oldPrice: 50000,
+        discount: "-16%",
+        image: "Upload/Me.jpg",
+        author: "Bác Sĩ Miriam Stoppard (Dịch: BS. Nguyễn Lan Hương)",
+        publisher: "NXB Y Học",
+        pages: 360,
+        publishYear: "2024",
+        dimensions: "16 x 24 cm",
+        coverType: "Bìa mềm in màu",
+        isbn: "978-604-74-3298-5",
+        description: "Cẩm nang khoa học và tận tâm đồng hành cùng người mẹ từ khi bắt đầu mang thai đến tuần thứ 40 và giai đoạn sau sinh. Cung cấp lời khuyên y khoa chuẩn xác về dinh dưỡng thai kỳ, các mốc khám thai quan trọng và bí quyết chăm sóc trẻ sơ sinh.",
+        highlights: [
+          "Lịch trình phát triển của thai nhi theo từng tuần tuổi chi tiết",
+          "Chế độ dinh dưỡng và kiểm soát cân nặng khoa học cho mẹ bầu",
+          "Các dấu hiệu chuyển dạ và phương pháp giảm đau khi sinh nở",
+          "Cẩm nang chăm sóc vết thương, phục hồi thể chất và tinh thần sau sinh"
+        ],
+        targetAudience: "Các bà mẹ tương lai, các ông bố trẻ và những ai chuẩn bị bước vào hành trình làm cha mẹ."
+      },
+      {
+        id: 19,
+        title: "Tuyển Tập Tác Phẩm Điện Ảnh & Nghệ Thuật: Hero",
+        category: "nghethuat",
+        categoryName: "Nghệ thuật",
+        price: 35000,
+        oldPrice: 45000,
+        discount: "-22%",
+        image: "Upload/P0001.jpg",
+        author: "Trương Nghệ Mưu & Ban Biên Tập Phê Bình Nghệ Thuật",
+        publisher: "NXB Mỹ Thuật",
+        pages: 275,
+        publishYear: "2023",
+        dimensions: "19 x 25 cm",
+        coverType: "Bìa cứng ép kim sang trọng",
+        isbn: "978-604-78-1901-2",
+        description: "Tuyển tập tranh ảnh và phân tích nghệ thuật thị giác trong kiệt tác điện ảnh Hero (Anh Hùng). Cuốn sách giải mã ngôn ngữ màu sắc (Đỏ, Xanh lam, Trắng, Xanh lục), nghệ thuật dàn dựng ánh sáng, thiết kế mỹ thuật bối cảnh và triết lý phương Đông.",
+        highlights: [
+          "Hàng trăm khung hình điện ảnh 4K độ phân giải cao tuyệt mỹ",
+          "Phân tích dụng ý tâm lý học màu sắc trong từng trường đoạn",
+          "Hậu trường thiết kế trang phục và bối cảnh lịch sử công phu",
+          "Bài bình luận chuyên sâu từ các nhà phê bình điện ảnh quốc tế"
+        ],
+        targetAudience: "Đạo diễn, nhà quay phim (DOP), họa sĩ mỹ thuật, nhiếp ảnh gia và người yêu điện ảnh."
+      }
+    ];
+
+    let currentCategory = 'all';
+    let cartItems = [];
+
+    function formatCurrency(amount) {
+      return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+
+    function renderCategories() {
+      const listEl = document.getElementById('categoryList');
+      listEl.innerHTML = '';
+
+      categoriesData.forEach(cat => {
+        let count = 0;
+        if (cat.id === 'all') {
+          count = booksData.length;
+        } else {
+          count = booksData.filter(b => b.category === cat.id).length;
+        }
+
+        const li = document.createElement('li');
+        li.className = `category-item ${cat.id === currentCategory ? 'active' : ''}`;
+        li.innerHTML = `
+          <div class="cat-name-group">
+            <span class="cat-bullet"></span>
+            <span>${cat.name}</span>
+          </div>
+          <span class="cat-count-badge">${count}</span>
+        `;
+        li.onclick = () => filterCategory(cat.id, cat.name);
+        listEl.appendChild(li);
+      });
+    }
+
+    function filterCategory(catId, catName) {
+      currentCategory = catId;
+
+      document.querySelectorAll('.category-item').forEach((item, idx) => {
+        if (categoriesData[idx].id === catId) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+
+      document.getElementById('currentCategoryTitle').textContent = catName || 'Tất cả sách';
+      document.getElementById('searchInput').value = '';
+      displayBooks();
+    }
+
+    function quickFilterNews(catId) {
+      const found = categoriesData.find(c => c.id === catId);
+      if (found) {
+        filterCategory(found.id, found.name);
+      }
+    }
+
+    function searchBooks() {
+      const keyword = document.getElementById('searchInput').value.trim().toLowerCase();
+      if (!keyword) {
+        displayBooks();
+        return;
+      }
+
+      document.getElementById('currentCategoryTitle').textContent = `Tìm kiếm: "${keyword}"`;
+      document.querySelectorAll('.category-item').forEach(item => item.classList.remove('active'));
+
+      const filtered = booksData.filter(b => b.title.toLowerCase().includes(keyword));
+      renderBooksToGrid(filtered);
+    }
+
+    function displayBooks() {
+      let books = [];
+      if (currentCategory === 'all') {
+        books = booksData;
+      } else {
+        books = booksData.filter(b => b.category === currentCategory);
+      }
+      renderBooksToGrid(books);
+    }
+
+    function renderBooksToGrid(books) {
+      const grid = document.getElementById('booksGrid');
+      const countEl = document.getElementById('categoryBookCount');
+      countEl.textContent = `(${books.length} cuốn)`;
+
+      if (books.length === 0) {
+        grid.innerHTML = `
+          <div class="no-books-card">
+            <p style="font-size: 14px; font-weight: 600; margin-bottom: 4px;">Chưa có cuốn sách nào thuộc chủ đề này.</p>
+            <p style="font-size: 12px; color: #9ca3af;">Quý khách vui lòng chọn các chủ đề khác: <strong>Kinh tế, Tin học, Ngoại ngữ...</strong></p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = books.map(book => `
+        <div class="book-card">
+          <div class="book-thumb-wrapper" onclick="openBookDetailModal(${book.id})" style="cursor: pointer;" title="Bấm để xem mô tả chi tiết: ${book.title}">
+            <img src="${book.image}" alt="${book.title}" onerror="this.src='Upload/KT0001.jpg'">
+            ${book.discount ? `<span class="discount-badge">${book.discount}</span>` : ''}
+            <div class="detail-modal-quick-btn" title="Xem chi tiết">🔍</div>
+          </div>
+
+          <div class="book-details-col">
+            <div>
+              <span class="book-cat-tag" onclick="quickFilterNews('${book.category}')" style="cursor: pointer;">${book.categoryName}</span>
+              <a href="javascript:void(0)" class="book-title-link" onclick="openBookDetailModal(${book.id})" title="Bấm để xem mô tả chi tiết: ${book.title}">
+                ${book.title}
+              </a>
+              <div class="book-stars" onclick="openBookDetailModal(${book.id})" style="cursor: pointer;" title="Đánh giá 5 sao">
+                ★★★★★ <span style="color: #6b7280; font-size: 10px; margin-left: 3px;">(5.0)</span>
+              </div>
+            </div>
+
+            <div>
+              <div class="book-pricing-row">
+                <span class="price-current">${formatCurrency(book.price)} đ</span>
+                ${book.oldPrice ? `<span class="price-old">${formatCurrency(book.oldPrice)} đ</span>` : ''}
+              </div>
+
+              <!-- CÁC NÚT: XEM CHI TIẾT & CHỌN MUA -->
+              <div style="display: flex; gap: 6px; align-items: center;">
+                <button type="button" class="btn-quick-detail" onclick="openBookDetailModal(${book.id})" title="Xem mô tả chi tiết cuốn sách">
+                  🔍 Chi tiết
+                </button>
+                <button type="button" class="btn-buy-modern" onclick="addToCart(${book.id})" title="Thêm cuốn sách này vào giỏ hàng">
+                  <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                  <span>Chọn mua</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    /* ========================================================
+       MÔ TẢ CHI TIẾT SÁCH (MODAL CHI TIẾT KHI BẤM XEM SÁCH)
+       ======================================================== */
+    function openBookDetailModal(bookId) {
+      const book = booksData.find(b => b.id === bookId);
+      if (!book) return;
+
+      document.getElementById('detailModalHeaderTitle').textContent = `📖 CHI TIẾT SÁCH: ${book.title.toUpperCase()}`;
+
+      const contentEl = document.getElementById('bookDetailModalContent');
+      const discountText = book.discount || (book.oldPrice ? `-${Math.round((1 - book.price/book.oldPrice)*100)}%` : '');
+      const savings = book.oldPrice ? formatCurrency(book.oldPrice - book.price) + ' đ' : '';
+
+      const highlightsList = (book.highlights && book.highlights.length > 0)
+        ? book.highlights.map(h => `<li>${h}</li>`).join('')
+        : `
+          <li>Nội dung bám sát khung chương trình đào tạo chuẩn đại học</li>
+          <li>Hệ thống ví dụ minh họa và bài tập tình huống thực tế</li>
+          <li>Cập nhật số liệu, công nghệ và quy chuẩn mới nhất</li>
+        `;
+
+      contentEl.innerHTML = `
+        <div class="book-detail-top">
+          <!-- Cột trái: Ảnh bìa + Cam kết chất lượng -->
+          <div class="book-detail-cover">
+            <img src="${book.image}" alt="${book.title}" onerror="this.src='Upload/KT0001.jpg'">
+            ${discountText ? `<span class="discount-badge" style="top: 24px; left: 24px; font-size: 12px; padding: 3px 8px;">${discountText}</span>` : ''}
+            
+            <div class="detail-trust-badges">
+              <div class="trust-badge-item">
+                <span class="icon">✓</span>
+                <span>100% Sách Thật - Bản Quyền NXB</span>
+              </div>
+              <div class="trust-badge-item">
+                <span class="icon">🚚</span>
+                <span>Giao hàng tận nơi toàn quốc</span>
+              </div>
+              <div class="trust-badge-item">
+                <span class="icon">🔄</span>
+                <span>Đổi trả miễn phí trong 7 ngày</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cột phải: Thông tin tổng quan & Đặt mua -->
+          <div class="book-detail-meta">
+            <div>
+              <div style="margin-bottom: 6px;">
+                <span class="book-cat-tag" onclick="closeModal('bookDetailModal'); quickFilterNews('${book.category}');" style="cursor: pointer;">${book.categoryName}</span>
+                <span style="font-size: 11.5px; color: #16a34a; font-weight: 600; margin-left: 6px;">● Còn hàng tại kho</span>
+              </div>
+              
+              <h2 class="book-detail-title">${book.title}</h2>
+
+              <div class="book-detail-submeta">
+                <span class="detail-stars">★★★★★ <span>(5.0)</span></span>
+                <span style="color: #9ca3af;">•</span>
+                <span style="color: #4b5563;">128 Lượt đã mua</span>
+                <span style="color: #9ca3af;">•</span>
+                <span style="color: #4b5563;">Tác giả: <strong>${book.author || 'Nhiều tác giả'}</strong></span>
+              </div>
+
+              <div class="detail-price-box">
+                <span class="detail-price-current">${formatCurrency(book.price)} đ</span>
+                ${book.oldPrice ? `<span class="detail-price-old">${formatCurrency(book.oldPrice)} đ</span>` : ''}
+                ${savings ? `<span class="detail-price-save">Tiết kiệm ${discountText} (${savings})</span>` : ''}
+              </div>
+
+              <!-- Bảng thông số thuộc tính sách -->
+              <div class="book-spec-grid">
+                <div class="spec-item">
+                  <span class="spec-label">Nhà xuất bản:</span>
+                  <span class="spec-value">${book.publisher || 'NXB Giáo Dục'}</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Năm xuất bản:</span>
+                  <span class="spec-value">${book.publishYear || '2024'}</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Số trang:</span>
+                  <span class="spec-value">${book.pages ? book.pages + ' trang' : '360 trang'}</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Hình thức:</span>
+                  <span class="spec-value">${book.coverType || 'Bìa mềm'}</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Kích thước:</span>
+                  <span class="spec-value">${book.dimensions || '16 x 24 cm'}</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Mã ISBN:</span>
+                  <span class="spec-value">${book.isbn || '978-604-01-2345-X'}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hàng thao tác số lượng & Đặt mua -->
+            <div class="detail-action-row">
+              <span style="font-size: 13px; font-weight: 600; color: #374151;">Số lượng:</span>
+              <div class="detail-qty-control">
+                <button type="button" class="detail-qty-btn" onclick="changeDetailQty(-1)">-</button>
+                <input type="number" id="detailBookQty" class="detail-qty-input" value="1" min="1" max="99" readonly>
+                <button type="button" class="detail-qty-btn" onclick="changeDetailQty(1)">+</button>
+              </div>
+
+              <button type="button" class="btn-detail-add-cart" onclick="addDetailBookToCart(${book.id})">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                <span>+ Thêm vào giỏ</span>
+              </button>
+
+              <button type="button" class="btn-detail-buy-now" onclick="buyNowFromDetail(${book.id})">
+                <span>⚡ Mua ngay qua QR</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Khối bài viết: Mô tả chi tiết nội dung cuốn sách -->
+        <div class="book-desc-section">
+          <div class="book-desc-section-title">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="#007a3d"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+            <span>MÔ TẢ CHI TIẾT NỘI DUNG CUỐN SÁCH</span>
+          </div>
+
+          <div class="book-desc-content">
+            <p><strong>"${book.title}"</strong> là một trong những ấn phẩm tiêu biểu và được đón nhận nồng nhiệt trong danh mục sách <strong>${book.categoryName}</strong> tại Nhà sách trường Đại học CN Việt - Hung.</p>
+            
+            <p>${book.description || 'Cuốn sách cung cấp hệ thống kiến thức toàn diện, cập nhật và chuyên sâu, kết hợp nhuần nhuyễn giữa lý thuyết nền tảng vững chắc và các ví dụ tình huống thực tiễn sinh động, giúp bạn đọc dễ dàng tiếp thu và vận dụng hiệu quả vào học tập cũng như công việc hàng ngày.'}</p>
+
+            <div class="book-highlights-box">
+              <h4>
+                <span>🌟 Điểm nổi bật &amp; Mục lục chính:</span>
+              </h4>
+              <ul>
+                ${highlightsList}
+              </ul>
+            </div>
+
+            <div class="book-audience-box">
+              <strong>🎯 Đối tượng độc giả phù hợp:</strong><br>
+              ${book.targetAudience || 'Sinh viên, giảng viên các trường đại học, cao đẳng, các chuyên gia làm việc trong lĩnh vực liên quan và tất cả bạn đọc đam mê nghiên cứu, trau dồi tri thức.'}
+            </div>
+
+            <div class="book-store-guarantee-box">
+              <strong>🏛️ Cam kết từ Nhà sách trường Đại học CN Việt - Hung:</strong><br>
+              • 100% sách chính hãng có bản quyền, nguồn gốc xuất xứ rõ ràng từ các nhà xuất bản uy tín.<br>
+              • Sách mới nguyên tem mác, được bao bọc và đóng gói cẩn thận chống va đập khi vận chuyển.<br>
+              • Hỗ trợ đổi trả trong vòng 7 ngày nếu sách bị lỗi in ấn, thiếu trang hoặc hư hại.<br>
+              • Quý khách cần đặt mua số lượng lớn hoặc tư vấn giáo trình, xin liên hệ Hotline/Zalo: <strong>0982 801 051</strong>.
+            </div>
+          </div>
+        </div>
+      `;
+
+      openModal('bookDetailModal');
+    }
+
+    function changeDetailQty(delta) {
+      const input = document.getElementById('detailBookQty');
+      if (!input) return;
+      let val = parseInt(input.value) || 1;
+      val += delta;
+      if (val < 1) val = 1;
+      if (val > 99) val = 99;
+      input.value = val;
+    }
+
+    function addDetailBookToCart(bookId) {
+      const book = booksData.find(b => b.id === bookId);
+      if (!book) return;
+
+      const input = document.getElementById('detailBookQty');
+      const qty = parseInt(input ? input.value : 1) || 1;
+
+      const existing = cartItems.find(i => i.book.id === bookId);
+      if (existing) {
+        existing.quantity += qty;
+      } else {
+        cartItems.push({ book: book, quantity: qty });
+      }
+
+      updateCartDisplay();
+      showToast(`Đã thêm ${qty} cuốn "${book.title}" vào giỏ hàng!`);
+    }
+
+    function buyNowFromDetail(bookId) {
+      addDetailBookToCart(bookId);
+      closeModal('bookDetailModal');
+      startCheckout();
+    }
+
+    function addToCart(bookId) {
+      const book = booksData.find(b => b.id === bookId);
+      if (!book) return;
+
+      const existing = cartItems.find(i => i.book.id === bookId);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cartItems.push({ book: book, quantity: 1 });
+      }
+
+      updateCartDisplay();
+      showToast(`Đã thêm "${book.title}" vào giỏ hàng!`);
+    }
+
+    function updateCartDisplay() {
+      let totalCount = 0;
+      let totalAmount = 0;
+
+      cartItems.forEach(i => {
+        totalCount += i.quantity;
+        totalAmount += i.quantity * i.book.price;
+      });
+
+      document.getElementById('cartTotalDisplay').textContent = formatCurrency(totalAmount) + ' đ';
+      document.getElementById('cartCountDisplay').textContent = totalCount + ' cuốn';
+      document.getElementById('navCartBadge').textContent = totalCount;
+
+      renderCartTable();
+    }
+
+    function clearCart() {
+      if (cartItems.length === 0) {
+        alert("Giỏ hàng của bạn đang trống!");
+        return;
+      }
+      if (confirm("Bạn có chắc chắn muốn làm trống giỏ hàng?")) {
+        cartItems = [];
+        updateCartDisplay();
+        showToast("Đã làm trống giỏ hàng!");
+      }
+    }
+
+    function changeItemQuantity(bookId, delta) {
+      const item = cartItems.find(i => i.book.id === bookId);
+      if (!item) return;
+
+      item.quantity += delta;
+      if (item.quantity <= 0) {
+        cartItems = cartItems.filter(i => i.book.id !== bookId);
+      }
+      updateCartDisplay();
+    }
+
+    function removeCartItem(bookId) {
+      cartItems = cartItems.filter(i => i.book.id !== bookId);
+      updateCartDisplay();
+      showToast("Đã xóa cuốn sách khỏi giỏ hàng!");
+    }
+
+    function renderCartTable() {
+      const bodyEl = document.getElementById('cartModalBody');
+      if (cartItems.length === 0) {
+        bodyEl.innerHTML = `
+          <div style="text-align: center; padding: 40px 10px; color: #6b7280;">
+            <p style="font-size: 15px; font-weight: 600; margin-bottom: 6px;">Giỏ hàng của bạn đang trống.</p>
+            <p style="font-size: 13px;">Hãy bấm nút <strong>"Chọn mua"</strong> ở các cuốn sách để thêm vào giỏ nhé!</p>
+          </div>
+        `;
+        return;
+      }
+
+      let totalAmount = 0;
+      let rows = cartItems.map((item, index) => {
+        const itemTotal = item.quantity * item.book.price;
+        totalAmount += itemTotal;
+        return `
+          <tr>
+            <td class="text-center">${index + 1}</td>
+            <td><strong>${item.book.title}</strong></td>
+            <td class="text-right" style="color: #c92127; font-weight: 600;">${formatCurrency(item.book.price)} đ</td>
+            <td class="text-center">
+              <button class="qty-btn" onclick="changeItemQuantity(${item.book.id}, -1)">-</button>
+              <span style="font-weight: bold; margin: 0 6px;">${item.quantity}</span>
+              <button class="qty-btn" onclick="changeItemQuantity(${item.book.id}, 1)">+</button>
+            </td>
+            <td class="text-right" style="font-weight: 800; color: #007a3d;">${formatCurrency(itemTotal)} đ</td>
+            <td class="text-center">
+              <button onclick="removeCartItem(${item.book.id})" style="color: #c92127; border: none; background: none; cursor: pointer; font-weight: bold; font-size: 15px;">✕</button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      bodyEl.innerHTML = `
+        <table class="cart-table">
+          <thead>
+            <tr>
+              <th style="width: 40px;" class="text-center">STT</th>
+              <th>Tựa sách</th>
+              <th class="text-right" style="width: 90px;">Đơn giá</th>
+              <th class="text-center" style="width: 85px;">Số lượng</th>
+              <th class="text-right" style="width: 95px;">Thành tiền</th>
+              <th class="text-center" style="width: 45px;">Xóa</th>
+            </tr>
+          </thead>
+          <tbody>${rows}</tbody>
+          <tfoot>
+            <tr>
+              <td colspan="4" style="text-align: right; font-weight: bold; background: #fafafa;">Tổng thanh toán:</td>
+              <td colspan="2" style="font-weight: 800; color: #c92127; font-size: 15px; background: #fafafa; text-align: right;">
+                ${formatCurrency(totalAmount)} đ
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      `;
+    }
+
+    function openCartModal() {
+      renderCartTable();
+      openModal('cartModal');
+    }
+
+    /* THANH TOÁN MÃ QR */
+    function startCheckout() {
+      if (cartItems.length === 0) {
+        alert("Giỏ hàng của bạn đang trống! Vui lòng chọn mua sách trước khi thanh toán.");
+        return;
+      }
+      closeModal('cartModal');
+
+      let totalAmount = 0;
+      let totalCount = 0;
+      cartItems.forEach(i => {
+        totalAmount += i.quantity * i.book.price;
+        totalCount += i.quantity;
+      });
+
+      const randomCode = Math.floor(1000 + Math.random() * 9000);
+      const orderCode = `BOOK ${randomCode}`;
+
+      document.getElementById('qrAmountDisplay').textContent = formatCurrency(totalAmount) + ' đ';
+      document.getElementById('qrCountDisplay').textContent = `${totalCount} cuốn`;
+      document.getElementById('qrOrderCode').textContent = orderCode;
+
+      openModal('qrPaymentModal');
+    }
+
+    function confirmQRPayment() {
+      if (cartItems.length === 0) return;
+
+      let totalAmount = 0;
+      cartItems.forEach(i => totalAmount += i.quantity * i.book.price);
+      const orderCode = document.getElementById('qrOrderCode').textContent;
+
+      alert(`🎉 ĐẶT HÀNG THÀNH CÔNG!\n\nĐơn hàng [${orderCode}] với tổng tiền ${formatCurrency(totalAmount)} đ đã được ghi nhận thanh toán qua QR Vietcombank.\nNhà sách Book Online sẽ liên hệ qua SĐT 0982801051 để xác nhận và giao sách sớm nhất!`);
+
+      cartItems = [];
+      updateCartDisplay();
+      closeModal('qrPaymentModal');
+      showToast("Xác nhận thanh toán mã QR thành công!");
+    }
+
+    function copyText(text) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast(`Đã sao chép: ${text}`);
+        }).catch(() => {
+          showToast(`Đã sao chép: ${text}`);
+        });
+      } else {
+        const temp = document.createElement("input");
+        temp.value = text;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand("copy");
+        document.body.removeChild(temp);
+        showToast(`Đã sao chép: ${text}`);
+      }
+    }
+
+    /* MODAL HELPERS */
+    function openModal(id) {
+      document.getElementById(id).classList.add('active');
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('active');
+    }
+
+    window.onclick = function(e) {
+      if (e.target.classList.contains('modal-overlay')) {
+        e.target.classList.remove('active');
+      }
+    };
+
+    function handleLogin(e) {
+      e.preventDefault();
+      const user = document.getElementById('loginUsername').value;
+      alert(`Xin chào ${user}! Đăng nhập thành công vào Book Online.`);
+      closeModal('loginModal');
+    }
+
+    let toastTimer;
+    function showToast(msg) {
+      const toast = document.getElementById('toastNotification');
+      toast.querySelector('span').textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2600);
+    }
+
+    /* KHỞI ĐỘNG */
+    window.addEventListener('DOMContentLoaded', () => {
+      renderCategories();
+      displayBooks();
+      updateCartDisplay();
+    });
+  </script>
+</body>
+</html>
